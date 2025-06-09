@@ -1,7 +1,9 @@
 {
   "short_name": "WebWaste",
-  "name": "WebWaste - Sustainable Web Development",
-  "description": "Tools and practices to reduce your website's environmental impact",
+  "name": "WebWaste – Sustainable Web Development Toolkit",
+  "description": "A toolkit and resource center for building eco-friendly, energy-efficient websites. Measure, improve, and showcase your site's sustainability.",
+  "lang": "en",
+  "dir": "ltr",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,18 +12,73 @@
     },
     {
       "src": "logo192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "sizes": "192x192"
+      "purpose": "any"
+    },
+    {
+      "src": "logo192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "logo512.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "sizes": "512x512"
+      "purpose": "any"
+    },
+    {
+      "src": "logo512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "./?utm_source=web_app_manifest",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#10b981",
   "background_color": "#ffffff",
-  "categories": ["environment", "sustainability", "web development"]
+  "categories": [
+    "environment",
+    "sustainability",
+    "web development",
+    "productivity",
+    "tools",
+    "education"
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/home.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "label": "Home screen"
+    },
+    {
+      "src": "screenshots/report.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "label": "Sustainability Report"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Run Site Audit",
+      "short_name": "Audit",
+      "description": "Quickly run a sustainability audit on your website",
+      "url": "/audit"
+    },
+    {
+      "name": "Best Practices",
+      "short_name": "Guides",
+      "description": "View sustainable web development guides",
+      "url": "/guides"
+    }
+  ],
+  "description_localized": {
+    "es": "Herramientas y recursos para hacer sitios web sostenibles y eficientes energéticamente.",
+    "fr": "Outils et ressources pour rendre votre site Web durable et économe en énergie."
+  }
 }
