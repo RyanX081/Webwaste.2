@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://webwaste.netlify.app/sitemap.xml
+
+# Crawl-delay for sustainability (reduce server load)
+Crawl-delay: 1
