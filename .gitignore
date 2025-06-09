@@ -1,40 +1,22 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependency directories
 /node_modules
 /.pnp
 .pnp.js
+.npm
+/.netlify
 
-# testing
-/coverage
-
-# production
+# Build and production output
 /build
+/dist
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Coverage reports
+/coverage
+coverage/
 
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS generated files
-Thumbs.db
-.DS_Store?
-ehthumbs.db
-Icon?
-
-# Logs
 *.log
 
 # Runtime data
@@ -42,23 +24,30 @@ pids
 *.pid
 *.seed
 
-# Coverage directory used by tools like istanbul
-coverage/
-
-# Dependency directories
-node_modules/
-
-# Optional npm cache directory
-.npm
-
-# Optional REPL history
-.node_repl_history
-
 # Environment variables
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Bundle analyzer reports
+# IDE and editor folders/files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# Miscellaneous
 bundle-report.html
+.node_repl_history
 
-# Netlify
-/.netlify
+# Cache and analyzer files (add these if you use these tools)
+.parcel-cache
+.eslintcache
