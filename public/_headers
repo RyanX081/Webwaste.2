@@ -1,28 +1,39 @@
+# Global security headers for all routes
 /*
-  X-Frame-Options: DENY
-  X-XSS-Protection: 1; mode=block
-  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY                         # Prevent clickjacking
+  X-XSS-Protection: 1; mode=block               # Basic XSS protection (legacy)
+  X-Content-Type-Options: nosniff               # Block MIME type sniffing
   Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload  # Force HTTPS (if supported)
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), fullscreen=()  # Restrict browser features
+  Cross-Origin-Opener-Policy: same-origin       # Defend against cross-origin attacks
+  Cross-Origin-Resource-Policy: same-origin
 
+# Long-term cache for static assets
 /static/*
   Cache-Control: public, max-age=31536000, immutable
 
+# CSS files: cache and explicit content type
 /*.css
   Cache-Control: public, max-age=31536000
-  Content-Type: text/css
+  Content-Type: text/css; charset=utf-8
 
+# JS files: cache and explicit content type
 /*.js
   Cache-Control: public, max-age=31536000
-  Content-Type: application/javascript
+  Content-Type: application/javascript; charset=utf-8
 
+# PNG images
 /*.png
   Cache-Control: public, max-age=31536000
   Content-Type: image/png
 
+# JPEG images
 /*.jpg
   Cache-Control: public, max-age=31536000
   Content-Type: image/jpeg
 
+# WebP images
 /*.webp
   Cache-Control: public, max-age=31536000
   Content-Type: image/webp
