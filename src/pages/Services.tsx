@@ -43,33 +43,35 @@ const process = [
 export function ServicesPage() {
   return (
     <div className="space-y-20 pb-24">
-      <section className="section-shell">
-        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-400 to-emerald-300" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.35),_transparent_70%)]" />
+        <div className="section-shell relative py-24 text-white">
           <SectionHeading
             kicker="Services"
             title="Shape a digital presence that champions sustainability and performance"
             subtitle="Choose the partnership format that meets your team where they are—discovery, redesign, or ongoing optimisation."
           />
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          <div className="mt-14 grid gap-10 lg:grid-cols-3">
             {services.map((service) => (
               <article
                 key={service.title}
-                className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-7 transition duration-300 hover:-translate-y-2 hover:border-emerald-300"
+                className="group flex h-full flex-col rounded-3xl bg-white/15 p-8 shadow-[0_30px_80px_-50px_rgba(15,23,42,0.6)] backdrop-blur"
               >
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white">
                   {service.icon}
                 </span>
-                <h3 className="mt-6 text-xl font-semibold text-slate-900">{service.title}</h3>
-                <p className="mt-4 text-sm text-slate-600">{service.description}</p>
-                <ul className="mt-6 grid gap-2 text-sm text-slate-600">
+                <h3 className="mt-6 text-xl font-semibold text-white">{service.title}</h3>
+                <p className="mt-4 text-sm text-white/80">{service.description}</p>
+                <ul className="mt-6 grid gap-2 text-sm text-white/80">
                   {service.deliverables.map((deliverable) => (
                     <li key={deliverable} className="flex gap-2">
-                      <Recycle className="mt-1 h-4 w-4 text-emerald-600" />
+                      <Recycle className="mt-1 h-4 w-4" />
                       <span>{deliverable}</span>
                     </li>
                   ))}
                 </ul>
-                <Button asChild className="mt-8 w-fit px-5">
+                <Button asChild className="mt-8 w-fit px-5 text-emerald-700" variant="secondary">
                   <Link to="/get-started">
                     Request proposal
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -79,18 +81,17 @@ export function ServicesPage() {
             ))}
           </div>
         </div>
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#f3f4f0] to-transparent" />
       </section>
 
-      <section className="section-shell">
-        <div className="overflow-hidden rounded-[2.25rem] border border-slate-200 bg-white p-10 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-[#f7fbf9] to-white" />
+        <div className="section-shell relative py-20">
           <SectionHeading kicker="Process" title="How we partner" subtitle="A rhythm tuned for clarity, velocity, and measurable sustainability results." />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {process.map((stage, index) => (
-              <div
-                key={stage.title}
-                className="rounded-3xl border border-slate-200 bg-slate-50 p-6"
-              >
-                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600">
+              <div key={stage.title} className="rounded-3xl bg-white p-6 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.3)]">
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-700">
                   Step {index + 1}
                 </span>
                 <h3 className="mt-4 text-lg font-semibold text-slate-900">{stage.title}</h3>

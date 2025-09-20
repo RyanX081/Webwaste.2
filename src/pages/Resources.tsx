@@ -30,20 +30,31 @@ const products = [
 export function ResourcesPage() {
   return (
     <div className="space-y-20 pb-24">
-      <section className="section-shell">
-        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 via-white to-sky-100" />
+        <div className="absolute inset-0 opacity-50 [mask-image:radial-gradient(circle_at_top,_black,transparent_70%)]">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <defs>
+              <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+                <circle cx="1.5" cy="1.5" r="1.5" fill="rgba(16,185,129,0.25)" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dots)" />
+          </svg>
+        </div>
+        <div className="section-shell relative py-24">
           <SectionHeading
             kicker="Resources"
             title="Downloadable toolkits to launch your climate-positive roadmap"
             subtitle="Each PDF product is handcrafted by our strategists and updated quarterly as the landscape shifts."
           />
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          <div className="mt-14 grid gap-8 lg:grid-cols-3">
             {products.map((product) => (
               <article
                 key={product.title}
-                className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-7 transition duration-300 hover:-translate-y-2 hover:border-emerald-300"
+                className="group flex h-full flex-col rounded-3xl bg-white/90 p-8 shadow-[0_30px_80px_-60px_rgba(15,23,42,0.45)] transition duration-300 hover:-translate-y-3 hover:shadow-[0_40px_120px_-60px_rgba(14,116,144,0.45)]"
               >
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-600">
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-700">
                   <span>{product.badge}</span>
                   {product.priceLabel === 'Free' ? <Sparkle className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
                 </div>
