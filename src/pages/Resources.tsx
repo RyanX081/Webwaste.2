@@ -31,7 +31,7 @@ export function ResourcesPage() {
   return (
     <div className="space-y-20 pb-24">
       <section className="section-shell">
-        <div className="rounded-[2.5rem] border border-white/10 bg-slate-900/60 px-8 py-14 shadow-[0_30px_80px_-30px_rgba(30,64,175,0.5)]">
+        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
           <SectionHeading
             kicker="Resources"
             title="Downloadable toolkits to launch your climate-positive roadmap"
@@ -41,24 +41,24 @@ export function ResourcesPage() {
             {products.map((product) => (
               <article
                 key={product.title}
-                className="group flex h-full flex-col rounded-3xl border border-white/10 bg-slate-900/70 p-7 transition duration-300 hover:-translate-y-2 hover:border-emerald-400/40"
+                className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-7 transition duration-300 hover:-translate-y-2 hover:border-emerald-300"
               >
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-200">
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-600">
                   <span>{product.badge}</span>
                   {product.priceLabel === 'Free' ? <Sparkle className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-white">{product.title}</h3>
-                <p className="mt-3 flex-1 text-sm text-emerald-100/80">{product.description}</p>
-                <ul className="mt-6 grid gap-2 text-sm text-emerald-100/80">
+                <h3 className="mt-4 text-xl font-semibold text-slate-900">{product.title}</h3>
+                <p className="mt-3 flex-1 text-sm text-slate-600">{product.description}</p>
+                <ul className="mt-6 grid gap-2 text-sm text-slate-600">
                   {product.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2">
-                      <ShieldCheck className="h-4 w-4 text-emerald-300" />
+                      <ShieldCheck className="h-4 w-4 text-emerald-600" />
                       {feature}
                     </li>
                   ))}
                 </ul>
                 <div className="mt-8 flex items-center justify-between">
-                  <span className="text-lg font-semibold text-white">{product.priceLabel}</span>
+                  <span className="text-lg font-semibold text-slate-900">{product.priceLabel}</span>
                   <Button variant={product.priceLabel === 'Free' ? 'secondary' : 'primary'} className="px-5">
                     {product.priceLabel === 'Free' ? 'Download PDF' : 'Purchase PDF'}
                     <DownloadCloud className="ml-2 h-4 w-4" />

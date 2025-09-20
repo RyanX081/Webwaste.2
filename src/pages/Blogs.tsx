@@ -37,7 +37,7 @@ export function BlogsPage() {
   return (
     <div className="space-y-20 pb-24">
       <section className="section-shell">
-        <div className="rounded-[2.5rem] border border-white/10 bg-slate-900/60 px-8 py-14 shadow-[0_30px_80px_-30px_rgba(129,140,248,0.4)]">
+        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
           <SectionHeading
             kicker="Blog"
             title="Insights at the intersection of UX, performance, and climate"
@@ -47,21 +47,21 @@ export function BlogsPage() {
             {posts.map((post) => (
               <article
                 key={post.title}
-                className="group flex h-full flex-col rounded-3xl border border-white/10 bg-slate-900/70 p-6 transition duration-300 hover:-translate-y-2 hover:border-emerald-400/40"
+                className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-6 transition duration-300 hover:-translate-y-2 hover:border-emerald-300"
               >
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-200">
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-600">
                   <span className="inline-flex items-center gap-2 text-[0.95em] capitalize">
                     <Leaf className="h-4 w-4" /> {post.tag}
                   </span>
                   <span>{post.updated}</span>
                 </div>
-                <h3 className="mt-4 text-2xl font-semibold text-white">{post.title}</h3>
-                <p className="mt-4 flex-1 text-sm text-emerald-100/80">{post.summary}</p>
-                <div className="mt-6 flex items-center justify-between text-sm text-emerald-100/70">
+                <h3 className="mt-4 text-2xl font-semibold text-slate-900">{post.title}</h3>
+                <p className="mt-4 flex-1 text-sm text-slate-600">{post.summary}</p>
+                <div className="mt-6 flex items-center justify-between text-sm text-slate-600">
                   <span className="inline-flex items-center gap-2">
-                    <Timer className="h-4 w-4" /> {post.readTime}
+                    <Timer className="h-4 w-4 text-emerald-600" /> {post.readTime}
                   </span>
-                  <span className="inline-flex items-center gap-2 font-medium text-emerald-200 group-hover:text-white">
+                  <span className="inline-flex items-center gap-2 font-medium text-emerald-700 group-hover:text-emerald-600">
                     Read story
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
@@ -69,7 +69,7 @@ export function BlogsPage() {
               </article>
             ))}
           </div>
-          <div className="mt-10 flex items-center justify-center gap-4 text-sm text-emerald-200/70">
+          <div className="mt-10 flex items-center justify-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm text-emerald-700">
             <Bookmark className="h-4 w-4" />
             Subscribe to our monthly digest for case studies, templates, and carbon experiments.
           </div>

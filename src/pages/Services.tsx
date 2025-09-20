@@ -44,7 +44,7 @@ export function ServicesPage() {
   return (
     <div className="space-y-20 pb-24">
       <section className="section-shell">
-        <div className="rounded-[2.5rem] border border-white/10 bg-slate-900/60 px-8 py-14 shadow-[0_30px_80px_-30px_rgba(22,163,74,0.55)]">
+        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
           <SectionHeading
             kicker="Services"
             title="Shape a digital presence that champions sustainability and performance"
@@ -54,17 +54,17 @@ export function ServicesPage() {
             {services.map((service) => (
               <article
                 key={service.title}
-                className="group flex h-full flex-col rounded-3xl border border-white/10 bg-slate-900/70 p-7 transition duration-300 hover:-translate-y-2 hover:border-emerald-400/40"
+                className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-7 transition duration-300 hover:-translate-y-2 hover:border-emerald-300"
               >
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-emerald-400/40 bg-emerald-500/10 text-emerald-200">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700">
                   {service.icon}
                 </span>
-                <h3 className="mt-6 text-xl font-semibold text-white">{service.title}</h3>
-                <p className="mt-4 text-sm text-emerald-100/80">{service.description}</p>
-                <ul className="mt-6 grid gap-2 text-sm text-emerald-100/80">
+                <h3 className="mt-6 text-xl font-semibold text-slate-900">{service.title}</h3>
+                <p className="mt-4 text-sm text-slate-600">{service.description}</p>
+                <ul className="mt-6 grid gap-2 text-sm text-slate-600">
                   {service.deliverables.map((deliverable) => (
                     <li key={deliverable} className="flex gap-2">
-                      <Recycle className="mt-1 h-4 w-4 text-emerald-300" />
+                      <Recycle className="mt-1 h-4 w-4 text-emerald-600" />
                       <span>{deliverable}</span>
                     </li>
                   ))}
@@ -82,19 +82,19 @@ export function ServicesPage() {
       </section>
 
       <section className="section-shell">
-        <div className="overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/5 p-10 shadow-[0_30px_80px_-30px_rgba(15,118,110,0.5)]">
+        <div className="overflow-hidden rounded-[2.25rem] border border-slate-200 bg-white p-10 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
           <SectionHeading kicker="Process" title="How we partner" subtitle="A rhythm tuned for clarity, velocity, and measurable sustainability results." />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {process.map((stage, index) => (
               <div
                 key={stage.title}
-                className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-sm shadow-emerald-500/10"
+                className="rounded-3xl border border-slate-200 bg-slate-50 p-6"
               >
-                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600">
                   Step {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold text-white">{stage.title}</h3>
-                <p className="mt-3 text-sm text-emerald-100/80">{stage.detail}</p>
+                <h3 className="mt-4 text-lg font-semibold text-slate-900">{stage.title}</h3>
+                <p className="mt-3 text-sm text-slate-600">{stage.detail}</p>
               </div>
             ))}
           </div>

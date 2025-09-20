@@ -47,7 +47,7 @@ export function AboutPage() {
   return (
     <div className="space-y-20 pb-24">
       <section className="section-shell">
-        <div className="rounded-[2.5rem] border border-white/10 bg-slate-900/60 px-8 py-14 shadow-[0_30px_80px_-30px_rgba(56,189,248,0.4)]">
+        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
           <SectionHeading
             kicker="About"
             title="Founded by designers who obsess over sustainability metrics"
@@ -55,9 +55,9 @@ export function AboutPage() {
           />
           <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-inner shadow-emerald-900/40">
-                <h3 className="text-lg font-semibold text-white">Studio snapshot</h3>
-                <ul className="mt-6 grid gap-4 text-sm text-emerald-100/80">
+              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+                <h3 className="text-lg font-semibold text-slate-900">Studio snapshot</h3>
+                <ul className="mt-6 grid gap-4 text-sm text-slate-600">
                   <li>• 18 specialists across UX, data, and green infrastructure</li>
                   <li>• 60+ audits delivered in B2B, SaaS, public sector, and culture</li>
                   <li>• Partnerships with Wholegrain Digital alumni and climate scientists</li>
@@ -68,12 +68,12 @@ export function AboutPage() {
             <div className="lg:col-span-7">
               <div className="space-y-8">
                 {timeline.map((item) => (
-                  <div key={item.year} className="relative border-l border-emerald-500/40 pl-8">
-                    <span className="absolute -left-[10px] top-0 flex h-5 w-5 items-center justify-center rounded-full border border-emerald-400/50 bg-slate-950 text-xs font-semibold text-emerald-200">
+                  <div key={item.year} className="relative border-l-2 border-emerald-200 pl-8">
+                    <span className="absolute -left-4 top-0 flex h-8 w-8 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-sm font-semibold text-emerald-700">
                       {item.year}
                     </span>
-                    <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                    <p className="mt-3 text-sm text-emerald-100/80">{item.copy}</p>
+                    <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
+                    <p className="mt-3 text-sm text-slate-600">{item.copy}</p>
                   </div>
                 ))}
               </div>
@@ -83,7 +83,7 @@ export function AboutPage() {
       </section>
 
       <section className="section-shell">
-        <div className="rounded-[2.25rem] border border-white/10 bg-emerald-500/5 p-10 shadow-[0_30px_80px_-40px_rgba(16,185,129,0.7)]">
+        <div className="rounded-[2.25rem] border border-slate-200 bg-white p-10 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
           <SectionHeading
             kicker="Principles"
             title="Designing responsibly across the product lifecycle"
@@ -91,13 +91,13 @@ export function AboutPage() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {principles.map((item) => (
-              <div key={item.title} className="flex gap-4 rounded-3xl border border-white/10 bg-slate-900/70 p-6">
-                <span className="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-full border border-emerald-400/40 bg-emerald-500/10 text-emerald-200">
+              <div key={item.title} className="flex gap-4 rounded-3xl border border-slate-200 bg-slate-50 p-6">
+                <span className="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700">
                   {item.icon}
                 </span>
                 <div>
-                  <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                  <p className="mt-3 text-sm text-emerald-100/80">{item.copy}</p>
+                  <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+                  <p className="mt-3 text-sm text-slate-600">{item.copy}</p>
                 </div>
               </div>
             ))}
