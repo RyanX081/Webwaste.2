@@ -45,9 +45,9 @@ const principles = [
 
 export function AboutPage() {
   return (
-    <div className="space-y-20 pb-24">
-      <section className="section-shell">
-        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
+    <div className="flow-ux__stack">
+      <section className="section-shell flow-ux__band">
+        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack">
           <SectionHeading
             kicker="About"
             title="Founded by designers who obsess over sustainability metrics"
@@ -82,8 +82,8 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="section-shell">
-        <div className="rounded-[2.25rem] border border-slate-200 bg-white p-10 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
+      <section className="section-shell flow-ux__band flow-ux__band--alt">
+        <div className="rounded-[2.25rem] border border-slate-200 bg-white p-10 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack">
           <SectionHeading
             kicker="Principles"
             title="Designing responsibly across the product lifecycle"

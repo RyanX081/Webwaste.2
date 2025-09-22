@@ -5,8 +5,8 @@ import { SectionHeading } from '@/components/common/SectionHeading';
 
 export function GetStartedPage() {
   return (
-    <div className="space-y-20 pb-24">
-      <section className="section-shell">
+    <div className="flow-ux__stack">
+      <section className="section-shell flow-ux__band">
         <div className="grid gap-10 rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeading
@@ -64,7 +64,7 @@ export function GetStartedPage() {
                 placeholder="Tell us about performance, carbon or UX goals."
               />
             </div>
-            <Button type="submit" className="w-full justify-center py-3 text-base">
+            <Button type="submit" className="w-full justify-center">
               Book chemistry call
             </Button>
             <p className="text-xs text-slate-500">By submitting, you agree to our privacy policy and consent to receiving project-related emails.</p>

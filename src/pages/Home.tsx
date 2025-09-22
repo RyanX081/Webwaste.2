@@ -48,13 +48,13 @@ const highlights = [
 
 export function HomePage() {
   return (
-    <div className="space-y-24 pb-24">
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-emerald-600 via-teal-500 to-sky-500 text-white">
+    <div className="flow-ux__stack">
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-emerald-600 via-teal-500 to-sky-500 text-white flow-ux__band flow-ux__band--hero">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.18),_transparent_65%)]" />
         <div className="absolute -top-48 right-[-20%] h-[30rem] w-[30rem] rounded-full bg-white/30 blur-[200px]" />
         <div className="absolute bottom-[-30%] left-[-25%] h-[26rem] w-[26rem] rounded-full bg-black/30 blur-[180px] opacity-30" />
-        <div className="section-shell relative flex flex-col gap-12 py-24 lg:flex-row lg:items-center lg:gap-20">
-          <div className="max-w-xl">
+        <div className="section-shell relative flex flex-col gap-12 py-10 lg:flex-row lg:items-center lg:gap-20">
+          <div className="max-w-xl flow-ux__stack">
             <p className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
               <Sprout className="h-4 w-4" /> Digital sustainability studio
             </p>
@@ -64,25 +64,22 @@ export function HomePage() {
             <p className="mt-6 text-base text-white/85 sm:text-lg">
               Wholegrain-inspired thinking, remixed for modern product teams. We connect climate-aware metrics with UX design so you can ship smaller, smarter releases.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button className="px-6 py-3 text-base" asChild>
+            <div className="flow-ux__cta-group">
+              <Button asChild>
                 <Link to="/get-started">
                   Start a low-carbon project
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button
-                variant="ghost"
-                className="px-6 py-3 text-base text-white hover:bg-white/10 hover:text-white"
-                asChild
-              >
-                <Link to="/resources">Browse resources</Link>
-              </Button>
+              <Link className="flow-ux__cta flow-ux__cta--tertiary" to="/resources">
+                Browse resources
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
           <div className="relative w-full max-w-md self-start rounded-3xl bg-white/12 p-8 backdrop-blur">
             <p className="text-sm uppercase tracking-[0.5em] text-white/70">Impact snapshot</p>
-            <div className="mt-6 grid gap-4">
+            <div className="mt-6 flow-ux__grid">
               {heroStats.map((stat) => (
                 <div key={stat.label} className="rounded-2xl border border-white/20 bg-white/10 p-5">
                   <p className="text-3xl font-semibold">{stat.value}</p>
@@ -90,15 +87,17 @@ export function HomePage() {
                 </div>
               ))}
             </div>
-            <div className="mt-8 rounded-2xl border border-white/20 bg-white/10 p-6 text-sm text-white/85">
-              “They transform sustainability from a retrofit into a north star for product & design.”
-            </div>
+            <figure className="mt-8 flow-ux__testimonial">
+              <blockquote>
+                “They transform sustainability from a retrofit into a north star for product & design.”
+              </blockquote>
+            </figure>
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#f3f4f0] to-transparent" />
       </section>
 
-      <section className="relative isolate overflow-hidden py-20">
+      <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--alt">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(94,234,212,0.25),_transparent_70%)]" />
         <div className="absolute inset-0 opacity-25 [mask-image:linear-gradient(to_bottom,black,transparent)]">
           <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -116,9 +115,9 @@ export function HomePage() {
             title="We turn waste into wins"
             subtitle="Every audit blends carbon, performance, accessibility, and product outcomes across the lifecycle."
           />
-          <div className="mt-12 grid gap-10 md:grid-cols-3">
+          <div className="mt-12 flow-ux__grid">
             {methodology.map((item) => (
-              <div key={item.title} className="rounded-3xl bg-white p-8 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.45)]">
+              <article key={item.title} className="flow-ux__card">
                 <div className="flex items-center gap-3 text-emerald-600">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50">
                     {item.icon}
@@ -126,13 +125,13 @@ export function HomePage() {
                   <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
                 </div>
                 <p className="mt-4 text-sm text-slate-600">{item.copy}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden">
+      <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--subtle">
         <div className="absolute inset-0 bg-gradient-to-r from-white via-[#f6faf7] to-white" />
         <div className="absolute -right-32 top-[-4rem] h-[22rem] w-[22rem] rounded-full bg-emerald-100 blur-[140px]" />
         <div className="section-shell relative py-24">
@@ -142,9 +141,9 @@ export function HomePage() {
             subtitle="No greenwashing—just deeply-researched practice, leadership alignment, and continuous enablement."
             align="left"
           />
-          <div className="mt-12 grid gap-12 lg:grid-cols-3">
+          <div className="mt-12 flow-ux__grid flow-ux__grid--dense">
             {highlights.map((item) => (
-              <div key={item.title} className="space-y-4">
+              <article key={item.title} className="flex flex-col gap-4 flow-ux__card">
                 <span className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
                   {item.badge}
                 </span>
@@ -154,7 +153,7 @@ export function HomePage() {
                   Explore how it works
                   <ArrowRight className="h-4 w-4" />
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>

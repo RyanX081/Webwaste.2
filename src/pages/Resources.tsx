@@ -29,8 +29,8 @@ const products = [
 
 export function ResourcesPage() {
   return (
-    <div className="space-y-20 pb-24">
-      <section className="relative isolate overflow-hidden">
+    <div className="flow-ux__stack">
+      <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--subtle">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 via-white to-sky-100" />
         <div className="absolute inset-0 opacity-50 [mask-image:radial-gradient(circle_at_top,_black,transparent_70%)]">
           <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -48,19 +48,19 @@ export function ResourcesPage() {
             title="Downloadable toolkits to launch your climate-positive roadmap"
             subtitle="Each PDF product is handcrafted by our strategists and updated quarterly as the landscape shifts."
           />
-          <div className="mt-14 grid gap-8 lg:grid-cols-3">
+          <div className="mt-14 flow-ux__grid flow-ux__grid--dense">
             {products.map((product) => (
               <article
                 key={product.title}
-                className="group flex h-full flex-col rounded-3xl bg-white/90 p-8 shadow-[0_30px_80px_-60px_rgba(15,23,42,0.45)] transition duration-300 hover:-translate-y-3 hover:shadow-[0_40px_120px_-60px_rgba(14,116,144,0.45)]"
+                className="group flex h-full flex-col flow-ux__card"
               >
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-700">
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-700 flow-ux__card-meta">
                   <span>{product.badge}</span>
                   {product.priceLabel === 'Free' ? <Sparkle className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
                 </div>
                 <h3 className="mt-4 text-xl font-semibold text-slate-900">{product.title}</h3>
-                <p className="mt-3 flex-1 text-sm text-slate-600">{product.description}</p>
-                <ul className="mt-6 grid gap-2 text-sm text-slate-600">
+                <p className="mt-3 flex-1 text-sm text-slate-600 flow-ux__meta">{product.description}</p>
+                <ul className="mt-6 grid gap-2 text-sm text-slate-600 flow-ux__bullet-list">
                   {product.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2">
                       <ShieldCheck className="h-4 w-4 text-emerald-600" />
@@ -70,7 +70,7 @@ export function ResourcesPage() {
                 </ul>
                 <div className="mt-8 flex items-center justify-between">
                   <span className="text-lg font-semibold text-slate-900">{product.priceLabel}</span>
-                  <Button variant={product.priceLabel === 'Free' ? 'secondary' : 'primary'} className="px-5">
+                  <Button variant={product.priceLabel === 'Free' ? 'secondary' : 'primary'}>
                     {product.priceLabel === 'Free' ? 'Download PDF' : 'Purchase PDF'}
                     <DownloadCloud className="ml-2 h-4 w-4" />
                   </Button>

@@ -35,28 +35,28 @@ const posts = [
 
 export function BlogsPage() {
   return (
-    <div className="space-y-20 pb-24">
-      <section className="section-shell">
-        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)]">
+    <div className="flow-ux__stack">
+      <section className="section-shell flow-ux__band">
+        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack">
           <SectionHeading
             kicker="Blog"
             title="Insights at the intersection of UX, performance, and climate"
             subtitle="Every article is written by practitioners actively shipping sustainable experiences with our clients."
           />
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <div className="mt-12 flow-ux__grid">
             {posts.map((post) => (
               <article
                 key={post.title}
-                className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-6 transition duration-300 hover:-translate-y-2 hover:border-emerald-300"
+                className="group flex h-full flex-col flow-ux__card"
               >
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-600">
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-600 flow-ux__card-meta">
                   <span className="inline-flex items-center gap-2 text-[0.95em] capitalize">
                     <Leaf className="h-4 w-4" /> {post.tag}
                   </span>
                   <span>{post.updated}</span>
                 </div>
                 <h3 className="mt-4 text-2xl font-semibold text-slate-900">{post.title}</h3>
-                <p className="mt-4 flex-1 text-sm text-slate-600">{post.summary}</p>
+                <p className="mt-4 flex-1 text-sm text-slate-600 flow-ux__meta">{post.summary}</p>
                 <div className="mt-6 flex items-center justify-between text-sm text-slate-600">
                   <span className="inline-flex items-center gap-2">
                     <Timer className="h-4 w-4 text-emerald-600" /> {post.readTime}
