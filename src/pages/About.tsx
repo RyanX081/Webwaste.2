@@ -47,7 +47,10 @@ export function AboutPage() {
   return (
     <div className="flow-ux__stack">
       <section className="section-shell flow-ux__band">
-        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack">
+        <div
+          className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack"
+          data-flow-animate="fade-up"
+        >
           <SectionHeading
             kicker="About"
             title="Founded by designers who obsess over sustainability metrics"
@@ -67,8 +70,13 @@ export function AboutPage() {
             </div>
             <div className="lg:col-span-7">
               <div className="space-y-8">
-                {timeline.map((item) => (
-                  <div key={item.year} className="relative border-l-2 border-emerald-200 pl-8">
+                {timeline.map((item, index) => (
+                  <div
+                    key={item.year}
+                    className="relative border-l-2 border-emerald-200 pl-8"
+                    data-flow-animate="fade-up"
+                    data-flow-animate-delay={`${index * 70}ms`}
+                  >
                     <span className="absolute -left-4 top-0 flex h-8 w-8 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-sm font-semibold text-emerald-700">
                       {item.year}
                     </span>
@@ -83,15 +91,23 @@ export function AboutPage() {
       </section>
 
       <section className="section-shell flow-ux__band flow-ux__band--alt">
-        <div className="rounded-[2.25rem] border border-slate-200 bg-white p-10 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack">
+        <div
+          className="rounded-[2.25rem] border border-slate-200 bg-white p-10 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack"
+          data-flow-animate="fade-up"
+        >
           <SectionHeading
             kicker="Principles"
             title="Designing responsibly across the product lifecycle"
             subtitle="We align with planetary limits without compromising craft, usability, or delight."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {principles.map((item) => (
-              <div key={item.title} className="flex gap-4 rounded-3xl border border-slate-200 bg-slate-50 p-6">
+            {principles.map((item, index) => (
+              <div
+                key={item.title}
+                className="flex gap-4 rounded-3xl border border-slate-200 bg-slate-50 p-6"
+                data-flow-animate="fade-up"
+                data-flow-animate-delay={`${index * 60}ms`}
+              >
                 <span className="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700">
                   {item.icon}
                 </span>

@@ -28,8 +28,8 @@
 .flow-ux__page {
   display: flex;
   flex-direction: column;
-  gap: var(--flow-ux-space-xl);
-  padding-block-end: var(--flow-ux-space-2xl);
+  gap: var(--flow-ux-space-lg);
+  padding-block-end: var(--flow-ux-space-lg);
 }
 
 .flow-ux__band {
@@ -468,12 +468,46 @@
   color: inherit;
 }
 
+.flow-ux__animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+
+.flow-ux__animate[data-flow-animate='fade-in'] {
+  transform: translateY(12px);
+}
+
+.flow-ux__animate[data-flow-animate='fade-right'] {
+  transform: translateX(-28px);
+}
+
+.flow-ux__animate[data-flow-animate='fade-left'] {
+  transform: translateX(28px);
+}
+
+.flow-ux__animate[data-flow-animate='zoom-in'] {
+  transform: scale(0.95);
+}
+
+.flow-ux__animate.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .flow-ux__cta,
   .flow-ux__card,
   .flow-ux__chevron,
   .flow-ux__accordion-panel,
-  .flow-ux__accordion-trigger {
+  .flow-ux__accordion-trigger,
+  .flow-ux__animate {
     transition: none;
+  }
+
+  .flow-ux__animate {
+    opacity: 1;
+    transform: none;
   }
 }

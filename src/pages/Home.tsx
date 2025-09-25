@@ -54,7 +54,7 @@ export function HomePage() {
         <div className="absolute -top-48 right-[-20%] h-[30rem] w-[30rem] rounded-full bg-white/30 blur-[200px]" />
         <div className="absolute bottom-[-30%] left-[-25%] h-[26rem] w-[26rem] rounded-full bg-black/30 blur-[180px] opacity-30" />
         <div className="section-shell relative flex flex-col gap-12 py-10 lg:flex-row lg:items-center lg:gap-20">
-          <div className="max-w-xl flow-ux__stack">
+          <div className="max-w-xl flow-ux__stack" data-flow-animate="fade-up">
             <p className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
               <Sprout className="h-4 w-4" /> Digital sustainability studio
             </p>
@@ -77,7 +77,11 @@ export function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="relative w-full max-w-md self-start rounded-3xl bg-white/12 p-8 backdrop-blur">
+          <div
+            className="relative w-full max-w-md self-start rounded-3xl bg-white/12 p-8 backdrop-blur"
+            data-flow-animate="fade-left"
+            data-flow-animate-delay="120ms"
+          >
             <p className="text-sm uppercase tracking-[0.5em] text-white/70">Impact snapshot</p>
             <div className="mt-6 flow-ux__grid">
               {heroStats.map((stat) => (
@@ -109,15 +113,20 @@ export function HomePage() {
             <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
         </div>
-        <div className="section-shell relative">
+        <div className="section-shell relative" data-flow-animate="fade-up">
           <SectionHeading
             kicker="Why WebWaste"
             title="We turn waste into wins"
             subtitle="Every audit blends carbon, performance, accessibility, and product outcomes across the lifecycle."
           />
           <div className="mt-12 flow-ux__grid">
-            {methodology.map((item) => (
-              <article key={item.title} className="flow-ux__card">
+            {methodology.map((item, index) => (
+              <article
+                key={item.title}
+                className="flow-ux__card"
+                data-flow-animate="fade-up"
+                data-flow-animate-delay={`${index * 80}ms`}
+              >
                 <div className="flex items-center gap-3 text-emerald-600">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50">
                     {item.icon}
@@ -134,7 +143,7 @@ export function HomePage() {
       <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--subtle">
         <div className="absolute inset-0 bg-gradient-to-r from-white via-[#f6faf7] to-white" />
         <div className="absolute -right-32 top-[-4rem] h-[22rem] w-[22rem] rounded-full bg-emerald-100 blur-[140px]" />
-        <div className="section-shell relative py-24">
+        <div className="section-shell relative py-24" data-flow-animate="fade-up">
           <SectionHeading
             kicker="What sets us apart"
             title="A studio built for climate-conscious product teams"
@@ -142,8 +151,13 @@ export function HomePage() {
             align="left"
           />
           <div className="mt-12 flow-ux__grid flow-ux__grid--dense">
-            {highlights.map((item) => (
-              <article key={item.title} className="flex flex-col gap-4 flow-ux__card">
+            {highlights.map((item, index) => (
+              <article
+                key={item.title}
+                className="flex flex-col gap-4 flow-ux__card"
+                data-flow-animate="fade-up"
+                data-flow-animate-delay={`${index * 80}ms`}
+              >
                 <span className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
                   {item.badge}
                 </span>

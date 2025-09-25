@@ -15,7 +15,7 @@ export function Layout({ children }: LayoutProps) {
         <div className="absolute bottom-[-20%] left-[-10%] h-[26rem] w-[26rem] rounded-full bg-[#c4ddff]/35 blur-[170px]" />
       </div>
       <Header />
-      <main className="relative z-10 flex-1 pt-24 pb-12 sm:pb-16 flow-ux flow-ux__page">{children}</main>
+      <main className="relative z-10 flex-1 pt-24 pb-8 sm:pb-12 flow-ux flow-ux__page">{children}</main>
       <Footer />
     </div>
   );

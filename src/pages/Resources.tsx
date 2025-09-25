@@ -42,17 +42,19 @@ export function ResourcesPage() {
             <rect width="100%" height="100%" fill="url(#dots)" />
           </svg>
         </div>
-        <div className="section-shell relative py-24">
+        <div className="section-shell relative py-24" data-flow-animate="fade-up">
           <SectionHeading
             kicker="Resources"
             title="Downloadable toolkits to launch your climate-positive roadmap"
             subtitle="Each PDF product is handcrafted by our strategists and updated quarterly as the landscape shifts."
           />
           <div className="mt-14 flow-ux__grid flow-ux__grid--dense">
-            {products.map((product) => (
+            {products.map((product, index) => (
               <article
                 key={product.title}
                 className="group flex h-full flex-col flow-ux__card"
+                data-flow-animate="fade-up"
+                data-flow-animate-delay={`${index * 100}ms`}
               >
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-700 flow-ux__card-meta">
                   <span>{product.badge}</span>

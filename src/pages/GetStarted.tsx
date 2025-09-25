@@ -7,8 +7,11 @@ export function GetStartedPage() {
   return (
     <div className="flow-ux__stack">
       <section className="section-shell flow-ux__band">
-        <div className="grid gap-10 rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] lg:grid-cols-2 lg:gap-16">
-          <div>
+        <div
+          className="grid gap-10 rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] lg:grid-cols-2 lg:gap-16"
+          data-flow-animate="fade-up"
+        >
+          <div data-flow-animate="fade-up">
             <SectionHeading
               kicker="Get started"
               title="Ready to build a lighter, faster, more responsible web?"
@@ -33,7 +36,11 @@ export function GetStartedPage() {
             </div>
           </div>
 
-          <form className="space-y-6 rounded-3xl border border-slate-200 bg-slate-50 p-8">
+          <form
+            className="space-y-6 rounded-3xl border border-slate-200 bg-slate-50 p-8"
+            data-flow-animate="fade-left"
+            data-flow-animate-delay="120ms"
+          >
             <div>
               <label className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600">Name</label>
               <input

@@ -37,17 +37,22 @@ export function BlogsPage() {
   return (
     <div className="flow-ux__stack">
       <section className="section-shell flow-ux__band">
-        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack">
+        <div
+          className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack"
+          data-flow-animate="fade-up"
+        >
           <SectionHeading
             kicker="Blog"
             title="Insights at the intersection of UX, performance, and climate"
             subtitle="Every article is written by practitioners actively shipping sustainable experiences with our clients."
           />
           <div className="mt-12 flow-ux__grid">
-            {posts.map((post) => (
+            {posts.map((post, index) => (
               <article
                 key={post.title}
                 className="group flex h-full flex-col flow-ux__card"
+                data-flow-animate="fade-up"
+                data-flow-animate-delay={`${index * 80}ms`}
               >
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-600 flow-ux__card-meta">
                   <span className="inline-flex items-center gap-2 text-[0.95em] capitalize">
@@ -69,7 +74,11 @@ export function BlogsPage() {
               </article>
             ))}
           </div>
-          <div className="mt-10 flex items-center justify-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm text-emerald-700">
+          <div
+            className="mt-10 flex items-center justify-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm text-emerald-700"
+            data-flow-animate="fade-up"
+            data-flow-animate-delay="200ms"
+          >
             <Bookmark className="h-4 w-4" />
             Subscribe to our monthly digest for case studies, templates, and carbon experiments.
           </div>

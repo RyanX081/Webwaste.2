@@ -49,13 +49,21 @@ export function ServicesPage() {
       <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--hero">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-400 to-emerald-300" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.35),_transparent_70%)]" />
-        <div className="section-shell relative py-24 text-white flow-ux__stack">
+        <div
+          className="section-shell relative py-24 text-white flow-ux__stack"
+          data-flow-animate="fade-up"
+        >
           <SectionHeading
             kicker="Services"
             title="Shape a digital presence that champions sustainability and performance"
             subtitle="Choose the partnership format that meets your team where they are—discovery, redesign, or ongoing optimisation."
           />
-          <div className="mt-10 flow-ux__accordion" data-flow-ux-accordion>
+          <div
+            className="mt-10 flow-ux__accordion"
+            data-flow-ux-accordion
+            data-flow-animate="fade-up"
+            data-flow-animate-delay="140ms"
+          >
             <ul className="flow-ux__accordion-items">
               {services.map((service, index) => {
                 const triggerId = `service-accordion-${index}`;
@@ -127,7 +135,10 @@ export function ServicesPage() {
 
       <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--alt">
         <div className="absolute inset-0 bg-gradient-to-r from-white via-[#f7fbf9] to-white" />
-        <div className="section-shell relative py-20 flow-ux__stack">
+        <div
+          className="section-shell relative py-20 flow-ux__stack"
+          data-flow-animate="fade-up"
+        >
           <SectionHeading
             kicker="Process"
             title="How we partner"
@@ -135,7 +146,12 @@ export function ServicesPage() {
           />
           <div className="mt-12 flow-ux__grid">
             {process.map((stage, index) => (
-              <div key={stage.title} className="flow-ux__card">
+              <div
+                key={stage.title}
+                className="flow-ux__card"
+                data-flow-animate="fade-up"
+                data-flow-animate-delay={`${index * 100}ms`}
+              >
                 <span className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-700">
                   Step {index + 1}
                 </span>

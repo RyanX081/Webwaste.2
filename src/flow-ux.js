@@ -1,8 +1,22 @@
 const ACCORDION_ATTR = '[data-flow-ux-accordion]';
 const TRIGGER_ATTR = '[data-flow-ux-accordion-trigger]';
 const PANEL_ATTR = '[data-flow-ux-accordion-panel]';
+const ANIMATE_ATTR = '[data-flow-animate]';
 
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+function handleMotionPreferenceChange(event) {
+  if (event.matches) {
+    const nodes = document.querySelectorAll('.flow-ux__animate');
+    nodes.forEach((node) => node.classList.add('is-visible'));
+  }
+}
+
+if (typeof reduceMotionQuery.addEventListener === 'function') {
+  reduceMotionQuery.addEventListener('change', handleMotionPreferenceChange);
+} else if (typeof reduceMotionQuery.addListener === 'function') {
+  reduceMotionQuery.addListener(handleMotionPreferenceChange);
+}
 
 const raf = (fn) => (window.requestAnimationFrame || window.setTimeout)(fn);
 
@@ -146,6 +160,43 @@ function setupAccordion(accordion) {
   });
 }
 
+function setupAnimations() {
+  const animatedNodes = Array.from(document.querySelectorAll(ANIMATE_ATTR));
+  if (!animatedNodes.length) {
+    return;
+  }
+
+  animatedNodes.forEach((node) => {
+    node.classList.add('flow-ux__animate');
+    const delay = node.dataset.flowAnimateDelay;
+    if (delay) {
+      node.style.transitionDelay = delay;
+    }
+  });
+
+  if (reduceMotionQuery.matches) {
+    animatedNodes.forEach((node) => node.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: '0px 0px -10% 0px'
+    }
+  );
+
+  animatedNodes.forEach((node) => observer.observe(node));
+}
+
 function initFlowUx() {
   const roots = Array.from(document.querySelectorAll('.flow-ux'));
   if (!roots.length) {
@@ -160,6 +211,8 @@ function initFlowUx() {
 
   const accordions = Array.from(document.querySelectorAll(ACCORDION_ATTR));
   accordions.forEach(setupAccordion);
+
+  setupAnimations();
 }
 
 if (document.readyState === 'loading') {
