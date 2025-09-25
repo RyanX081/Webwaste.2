@@ -11,9 +11,9 @@ const baseStyles = 'inline-flex items-center justify-center gap-2 rounded-full p
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'text-white shadow-lg shadow-emerald-200/40 hover:shadow-emerald-200/60 focus-visible:outline-emerald-500 flow-ux__cta--primary',
+    'bg-emerald-600 text-white shadow-sm shadow-emerald-200/60 hover:bg-emerald-500 focus-visible:outline-emerald-600 flow-ux__cta--primary',
   secondary:
-    'text-slate-900 hover:text-emerald-700 focus-visible:outline-emerald-400 flow-ux__cta--secondary',
+    'bg-white text-slate-900 border border-slate-200 hover:border-emerald-400 hover:text-emerald-700 focus-visible:outline-slate-400 flow-ux__cta--secondary',
   ghost: 'bg-transparent text-slate-700 hover:bg-slate-100 focus-visible:outline-slate-400 flow-ux__cta--tertiary'
 };
 

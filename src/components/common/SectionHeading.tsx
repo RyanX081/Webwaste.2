@@ -17,7 +17,7 @@ export function SectionHeading({ kicker, title, subtitle, align = 'center', clas
     <div
       className={cx(
         'mx-auto max-w-3xl flow-ux__intro',
-        align === 'center' ? 'flow-ux__intro--center' : 'flow-ux__intro--left',
+        align === 'center' ? 'text-center' : 'text-left flow-ux__intro--left',
         className
       )}
     >

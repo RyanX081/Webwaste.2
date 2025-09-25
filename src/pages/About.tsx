@@ -46,52 +46,60 @@ const principles = [
 export function AboutPage() {
   return (
     <div className="flow-ux__stack">
-      <section className="flow-ux__band flow-ux__band--surface">
-        <div className="flow-ux__section flow-ux__surface-panel">
+      <section className="section-shell flow-ux__band">
+        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack">
           <SectionHeading
             kicker="About"
             title="Founded by designers who obsess over sustainability metrics"
             subtitle="Our studio blends service design, performance engineering, and climate research to help companies shrink their digital footprint."
           />
-          <div className="flow-ux__grid flow-ux__grid--cols-2">
-            <aside className="flow-ux__card">
-              <h3 className="text-lg font-semibold text-slate-900">Studio snapshot</h3>
-              <ul className="flow-ux__list flow-ux__meta">
-                <li className="flow-ux__list-item">18 specialists across UX, data, and green infrastructure</li>
-                <li className="flow-ux__list-item">60+ audits delivered in B2B, SaaS, public sector, and culture</li>
-                <li className="flow-ux__list-item">Partnerships with Wholegrain Digital alumni and climate scientists</li>
-                <li className="flow-ux__list-item">Contributors to open climate datasets &amp; utilitarian design standards</li>
-              </ul>
-            </aside>
-            <div className="flow-ux__stack">
-              {timeline.map((item) => (
-                <article key={item.year} className="flow-ux__card">
-                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-700">{item.year}</span>
-                  <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
-                  <p className="flow-ux__meta">{item.copy}</p>
-                </article>
-              ))}
+          <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+                <h3 className="text-lg font-semibold text-slate-900">Studio snapshot</h3>
+                <ul className="mt-6 grid gap-4 text-sm text-slate-600">
+                  <li>• 18 specialists across UX, data, and green infrastructure</li>
+                  <li>• 60+ audits delivered in B2B, SaaS, public sector, and culture</li>
+                  <li>• Partnerships with Wholegrain Digital alumni and climate scientists</li>
+                  <li>• Contributors to open climate datasets & utilitarian design standards</li>
+                </ul>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="space-y-8">
+                {timeline.map((item) => (
+                  <div key={item.year} className="relative border-l-2 border-emerald-200 pl-8">
+                    <span className="absolute -left-4 top-0 flex h-8 w-8 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-sm font-semibold text-emerald-700">
+                      {item.year}
+                    </span>
+                    <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
+                    <p className="mt-3 text-sm text-slate-600">{item.copy}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="flow-ux__band flow-ux__band--tint">
-        <div className="flow-ux__section flow-ux__surface-panel">
+      <section className="section-shell flow-ux__band flow-ux__band--alt">
+        <div className="rounded-[2.25rem] border border-slate-200 bg-white p-10 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack">
           <SectionHeading
             kicker="Principles"
             title="Designing responsibly across the product lifecycle"
             subtitle="We align with planetary limits without compromising craft, usability, or delight."
           />
-          <div className="flow-ux__grid flow-ux__grid--cols-2">
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {principles.map((item) => (
-              <article key={item.title} className="flow-ux__card">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
+              <div key={item.title} className="flex gap-4 rounded-3xl border border-slate-200 bg-slate-50 p-6">
+                <span className="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700">
                   {item.icon}
                 </span>
-                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="flow-ux__meta">{item.copy}</p>
-              </article>
+                <div>
+                  <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+                  <p className="mt-3 text-sm text-slate-600">{item.copy}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
