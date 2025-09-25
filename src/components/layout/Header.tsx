@@ -1,121 +1,138 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
-  { label: 'About', to: '/about' },
-  { label: 'Resources', to: '/resources' },
-  { label: 'Blogs', to: '/blogs' },
-  { label: 'Services', to: '/services' },
-  { label: 'Get Started', to: '/get-started', cta: true }
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Green Audit Kit', href: '#audit' },
+  { label: 'Blog', href: '#blog' },
+  { label: 'Contact', href: '#contact' }
 ];
 
 export function Header() {
-  const [open, setOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const baseLinkClasses = 'rounded-full px-4 py-2 text-sm font-medium transition-all duration-200';
-  const baseMobileClasses = 'rounded-xl px-4 py-3 text-base font-medium transition-all';
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 8);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [isMenuOpen]);
+
+  const motionQuery = typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  const prefersReducedMotion = motionQuery?.matches ?? false;
+
+  const handleNavigate = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    const targetId = href.replace('#', '');
+    const el = document.getElementById(targetId);
+    if (el) {
+      const headerOffset = 88;
+      const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top: Math.max(y, 0), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    } else {
+      window.location.hash = targetId;
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6 lg:px-8">
-        <NavLink
-          to="/"
-          className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-900 hover:text-emerald-700"
-          onClick={() => setOpen(false)}
+    <header
+      className={`sticky top-0 z-50 transition ${
+        isScrolled ? 'bg-white/90 shadow-lg shadow-slate-900/5 backdrop-blur-xl' : 'bg-transparent'
+      }`}
+    >
+      <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6 sm:px-8">
+        <a
+          className="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900"
+          href="#home"
+          onClick={(event) => handleNavigate(event, '#home')}
         >
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#16a34c]/10 text-[#16a34c]">
             WW
           </span>
           WebWaste
-        </NavLink>
-
-        <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) =>
-            item.cta ? (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  [
-                    baseLinkClasses,
-                    'bg-emerald-600 text-white shadow-sm shadow-emerald-200/60 hover:bg-emerald-500',
-                    isActive ? 'ring-2 ring-emerald-300/70' : ''
-                  ].join(' ')
-                }
-              >
-                {item.label}
-              </NavLink>
-            ) : (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  [
-                    baseLinkClasses,
-                    isActive
-                      ? 'bg-emerald-100 text-emerald-700'
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-                  ].join(' ')
-                }
-              >
-                {item.label}
-              </NavLink>
-            )
-          )}
+        </a>
+        <nav className="hidden items-center gap-1 lg:flex">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-[#16a34c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
+              href={item.href}
+              onClick={(event) => handleNavigate(event, item.href)}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#16a34c] px-5 py-2 text-sm font-semibold text-white shadow-md shadow-[#16a34c]/30 transition hover:bg-[#15803d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
+            href="#audit"
+            onClick={(event) => handleNavigate(event, '#audit')}
+          >
+            Run a Green Audit
+          </a>
         </nav>
-
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:text-emerald-600 md:hidden"
-          onClick={() => setOpen((prev) => !prev)}
-          aria-expanded={open}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-[#16a34c]/60 hover:text-[#16a34c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c] lg:hidden"
           aria-label="Toggle navigation"
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {isMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
         </button>
       </div>
-
-      {open && (
-        <div className="mx-auto mt-2 w-full max-w-6xl px-6 pb-6 lg:px-8 md:hidden">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl">
-            <div className="grid gap-3">
-              {navItems.map((item) =>
-                item.cta ? (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      [
-                        baseMobileClasses,
-                        'bg-emerald-600 text-white text-center shadow-sm hover:bg-emerald-500',
-                        isActive ? 'ring-2 ring-emerald-300/70' : ''
-                      ].join(' ')
-                    }
-                  >
-                    {item.label}
-                  </NavLink>
-                ) : (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      [
-                        baseMobileClasses,
-                        isActive ? 'bg-emerald-100 text-emerald-700' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-                      ].join(' ')
-                    }
-                  >
-                    {item.label}
-                  </NavLink>
-                )
-              )}
+      <div
+        className={`lg:hidden ${
+          isMenuOpen
+            ? 'pointer-events-auto max-h-[480px] opacity-100'
+            : 'pointer-events-none max-h-0 opacity-0'
+        } transition-all duration-300 ease-out`}
+      >
+        <div className="mx-auto w-full max-w-6xl px-6 pb-6 sm:px-8">
+          <div className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-6 shadow-2xl shadow-slate-900/10 backdrop-blur">
+            <div className="flex flex-col gap-3">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  className="rounded-2xl px-4 py-3 text-base font-semibold text-slate-600 transition hover:bg-[#16a34c]/10 hover:text-[#15803d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
+                  href={item.href}
+                  onClick={(event) => handleNavigate(event, item.href)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <a
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#16a34c] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#16a34c]/30 transition hover:bg-[#15803d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
+                href="#audit"
+                onClick={(event) => handleNavigate(event, '#audit')}
+              >
+                Run a Green Audit
+              </a>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }

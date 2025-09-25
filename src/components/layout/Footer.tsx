@@ -1,88 +1,121 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
+import { ArrowRight, Linkedin, Mail, Send, Twitter } from 'lucide-react';
 
-const footerLinks = [
-  { label: 'About', to: '/about' },
-  { label: 'Resources', to: '/resources' },
-  { label: 'Blogs', to: '/blogs' },
-  { label: 'Services', to: '/services' },
-  { label: 'Get Started', to: '/get-started' }
+const navLinks = [
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Green Audit Kit', href: '#audit' },
+  { label: 'Blog', href: '#blog' },
+  { label: 'Contact', href: '#contact' }
+];
+
+const socials = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com', icon: Linkedin },
+  { label: 'Twitter', href: 'https://www.twitter.com', icon: Twitter },
+  { label: 'Newsletter', href: '#newsletter', icon: Send }
 ];
 
 export function Footer() {
   return (
-    <footer className="relative mt-12 sm:mt-16 flow-ux__footer">
-      <div className="section-shell flow-ux__footer-columns">
-        <div>
-          <div className="flex items-center gap-2 text-lg font-semibold tracking-tight text-white">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
-              WW
-            </span>
-            WebWaste
+    <footer className="bg-[#07140c] text-white">
+      <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr]">
+          <div>
+            <a className="flex items-center gap-3 text-lg font-semibold tracking-tight" href="#home">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#16a34c]/20 text-[#16a34c]">
+                WW
+              </span>
+              WebWaste
+            </a>
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">
+              We design digital experiences that move faster, feel better, and tread lighter on the planet. From research to release, sustainability is baked into every decision.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/60">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1">
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                hello@webwaste.studio
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1">
+                London · Remote-first
+              </span>
+            </div>
+            <div className="mt-8 flex items-center gap-3">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-[#16a34c] hover:bg-[#16a34c]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-4 w-4" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
-          <p className="mt-4 max-w-sm text-sm">
-            We help modern teams design leaner digital experiences—less carbon, faster journeys, happier users.
-          </p>
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-2">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#facc14]">Navigate</p>
+              <ul className="mt-5 space-y-3 text-sm text-white/70">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <a className="transition hover:text-white" href={link.href}>
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#facc14]">Services</p>
+              <ul className="mt-5 space-y-3 text-sm text-white/70">
+                <li>Sustainable UX audits</li>
+                <li>Eco-first design systems</li>
+                <li>Low-impact engineering</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#facc14]">Newsletter</p>
+            <p className="mt-4 text-sm text-white/70">
+              Monthly notes with practical tactics and case studies on digital sustainability.
+            </p>
+            <form className="mt-5 space-y-3" id="newsletter">
+              <label className="sr-only" htmlFor="newsletter-input">
+                Email address
+              </label>
+              <input
+                id="newsletter-input"
+                type="email"
+                autoComplete="email"
+                required
+                placeholder="you@example.com"
+                className="w-full rounded-full border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#facc14] focus:outline-none focus:ring-2 focus:ring-[#facc14]/30"
+              />
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 rounded-full bg-[#facc14] px-5 py-3 text-sm font-semibold text-[#0f3815] transition hover:bg-[#fbbf24] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#facc14]"
+              >
+                Join the list
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </form>
+          </div>
         </div>
-
-        <div className="flow-ux__newsletter">
-          <h3 className="text-base font-semibold text-white">Stay in the loop</h3>
-          <p className="text-sm text-emerald-100/80">Monthly dispatches on sustainable UX, performance, and governance.</p>
-          <form>
-            <label className="sr-only" htmlFor="newsletter-email">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              name="newsletter-email"
-              type="email"
-              autoComplete="email"
-              placeholder="you@example.com"
-              required
-            />
-            <Button type="submit">Subscribe</Button>
-          </form>
-        </div>
-
-        <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-emerald-200">Navigate</p>
-          <ul className="mt-4 grid gap-2 text-sm text-emerald-50/80">
-            {footerLinks.map((link) => (
-              <li key={link.to}>
-                <NavLink className="transition hover:text-white" to={link.to}>
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-emerald-200">Contact</p>
-          <ul className="mt-4 grid gap-1 text-sm">
-            <li>hello@webwaste.studio</li>
-            <li>+44 20 1234 5678</li>
-            <li>London · Remote-first</li>
-          </ul>
-        </div>
-
-        <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-emerald-200">Follow</p>
-          <ul className="mt-4 grid gap-1 text-sm">
-            <li><a className="transition hover:text-white" href="#">LinkedIn</a></li>
-            <li><a className="transition hover:text-white" href="#">Mastodon</a></li>
-            <li><a className="transition hover:text-white" href="#">Newsletter</a></li>
-          </ul>
-        </div>
-      </div>
-      <div className="mt-10 border-t border-emerald-100/20 py-6">
-        <div className="section-shell flow-ux__legal">
+        <div className="mt-12 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} WebWaste Studio. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#">Privacy</a>
-            <a href="#">Accessibility</a>
-            <a href="#">Imprint</a>
+          <div className="mt-4 flex gap-4 sm:mt-0">
+            <a className="transition hover:text-white" href="#">
+              Privacy
+            </a>
+            <a className="transition hover:text-white" href="#">
+              Accessibility
+            </a>
+            <a className="transition hover:text-white" href="#">
+              Sustainability
+            </a>
           </div>
         </div>
       </div>
