@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight, Bookmark, Leaf, Timer } from 'lucide-react';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { Button } from '@/components/ui/button';
 
 const posts = [
   {
@@ -36,32 +37,29 @@ const posts = [
 export function BlogsPage() {
   return (
     <div className="flow-ux__stack">
-      <section className="section-shell flow-ux__band">
-        <div className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack">
+      <section className="flow-ux__band flow-ux__band--surface">
+        <div className="flow-ux__section flow-ux__surface-panel">
           <SectionHeading
             kicker="Blog"
             title="Insights at the intersection of UX, performance, and climate"
             subtitle="Every article is written by practitioners actively shipping sustainable experiences with our clients."
           />
-          <div className="mt-12 flow-ux__grid">
+          <div className="flow-ux__grid flow-ux__grid--cols-2">
             {posts.map((post) => (
-              <article
-                key={post.title}
-                className="group flex h-full flex-col flow-ux__card"
-              >
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-600 flow-ux__card-meta">
+              <article key={post.title} className="flow-ux__card">
+                <div className="flow-ux__card-meta text-emerald-600">
                   <span className="inline-flex items-center gap-2 text-[0.95em] capitalize">
                     <Leaf className="h-4 w-4" /> {post.tag}
                   </span>
                   <span>{post.updated}</span>
                 </div>
-                <h3 className="mt-4 text-2xl font-semibold text-slate-900">{post.title}</h3>
-                <p className="mt-4 flex-1 text-sm text-slate-600 flow-ux__meta">{post.summary}</p>
-                <div className="mt-6 flex items-center justify-between text-sm text-slate-600">
+                <h3 className="text-2xl font-semibold text-slate-900">{post.title}</h3>
+                <p className="flow-ux__meta">{post.summary}</p>
+                <div className="flex items-center justify-between text-sm text-slate-600">
                   <span className="inline-flex items-center gap-2">
                     <Timer className="h-4 w-4 text-emerald-600" /> {post.readTime}
                   </span>
-                  <span className="inline-flex items-center gap-2 font-medium text-emerald-700 group-hover:text-emerald-600">
+                  <span className="inline-flex items-center gap-2 font-semibold text-emerald-700">
                     Read story
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
@@ -69,9 +67,12 @@ export function BlogsPage() {
               </article>
             ))}
           </div>
-          <div className="mt-10 flex items-center justify-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm text-emerald-700">
-            <Bookmark className="h-4 w-4" />
-            Subscribe to our monthly digest for case studies, templates, and carbon experiments.
+          <div className="flow-ux__card items-center justify-between gap-4 sm:flex">
+            <div className="flex items-center gap-3 text-sm text-emerald-700">
+              <Bookmark className="h-5 w-5" />
+              Subscribe to our monthly digest for case studies, templates, and carbon experiments.
+            </div>
+            <Button variant="secondary">Join the list</Button>
           </div>
         </div>
       </section>

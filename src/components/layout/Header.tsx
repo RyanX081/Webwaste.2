@@ -17,8 +17,8 @@ export function Header() {
   const baseMobileClasses = 'rounded-xl px-4 py-3 text-base font-medium transition-all';
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6 lg:px-8">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-emerald-100/40 bg-white/70 shadow-sm backdrop-blur-xl">
+      <div className="mx-auto flex h-20 w-full max-w-[1220px] items-center justify-between px-5 sm:px-6 lg:px-10">
         <NavLink
           to="/"
           className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-900 hover:text-emerald-700"
@@ -30,7 +30,7 @@ export function Header() {
           WebWaste
         </NavLink>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-2 md:flex">
           {navItems.map((item) =>
             item.cta ? (
               <NavLink
@@ -39,8 +39,8 @@ export function Header() {
                 className={({ isActive }) =>
                   [
                     baseLinkClasses,
-                    'bg-emerald-600 text-white shadow-sm shadow-emerald-200/60 hover:bg-emerald-500',
-                    isActive ? 'ring-2 ring-emerald-300/70' : ''
+                    'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-200/40 hover:from-emerald-400 hover:to-emerald-600',
+                    isActive ? 'ring-2 ring-emerald-200/70' : 'hover:shadow-xl hover:-translate-y-0.5'
                   ].join(' ')
                 }
               >
@@ -54,8 +54,8 @@ export function Header() {
                   [
                     baseLinkClasses,
                     isActive
-                      ? 'bg-emerald-100 text-emerald-700'
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                      ? 'bg-emerald-100 text-emerald-700 shadow-inner shadow-emerald-200/60'
+                      : 'text-slate-600 hover:bg-white/70 hover:text-slate-900 hover:-translate-y-0.5'
                   ].join(' ')
                 }
               >
@@ -67,7 +67,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:text-emerald-600 md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-emerald-100 bg-white/80 text-slate-700 shadow-md shadow-emerald-100/50 transition hover:text-emerald-600 md:hidden"
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-label="Toggle navigation"
@@ -77,8 +77,8 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="mx-auto mt-2 w-full max-w-6xl px-6 pb-6 lg:px-8 md:hidden">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl">
+        <div className="mx-auto mt-2 w-full max-w-[1220px] px-5 pb-6 sm:px-6 lg:px-10 md:hidden">
+          <div className="rounded-2xl border border-emerald-100 bg-white/95 p-4 shadow-2xl shadow-emerald-100/60 backdrop-blur-lg">
             <div className="grid gap-3">
               {navItems.map((item) =>
                 item.cta ? (
@@ -89,8 +89,8 @@ export function Header() {
                     className={({ isActive }) =>
                       [
                         baseMobileClasses,
-                        'bg-emerald-600 text-white text-center shadow-sm hover:bg-emerald-500',
-                        isActive ? 'ring-2 ring-emerald-300/70' : ''
+                        'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-center shadow-lg shadow-emerald-200/40 hover:from-emerald-400 hover:to-emerald-600',
+                        isActive ? 'ring-2 ring-emerald-200/60' : ''
                       ].join(' ')
                     }
                   >
@@ -104,7 +104,9 @@ export function Header() {
                     className={({ isActive }) =>
                       [
                         baseMobileClasses,
-                        isActive ? 'bg-emerald-100 text-emerald-700' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                        isActive
+                          ? 'bg-emerald-100 text-emerald-700'
+                          : 'text-slate-600 hover:bg-white/70 hover:text-slate-900'
                       ].join(' ')
                     }
                   >

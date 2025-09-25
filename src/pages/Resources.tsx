@@ -1,5 +1,5 @@
 import React from 'react';
-import { DownloadCloud, Lock, ShieldCheck, Sparkle } from 'lucide-react';
+import { DownloadCloud, Lock, Sparkle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/common/SectionHeading';
 
@@ -30,45 +30,28 @@ const products = [
 export function ResourcesPage() {
   return (
     <div className="flow-ux__stack">
-      <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--subtle">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 via-white to-sky-100" />
-        <div className="absolute inset-0 opacity-50 [mask-image:radial-gradient(circle_at_top,_black,transparent_70%)]">
-          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <defs>
-              <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
-                <circle cx="1.5" cy="1.5" r="1.5" fill="rgba(16,185,129,0.25)" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#dots)" />
-          </svg>
-        </div>
-        <div className="section-shell relative py-24">
+      <section className="flow-ux__band flow-ux__band--muted">
+        <div className="flow-ux__section flow-ux__surface-panel">
           <SectionHeading
             kicker="Resources"
-            title="Downloadable toolkits to launch your climate-positive roadmap"
-            subtitle="Each PDF product is handcrafted by our strategists and updated quarterly as the landscape shifts."
+            title="Toolkits to launch a climate-positive roadmap"
+            subtitle="Each PDF is handcrafted by our strategists and refreshed quarterly as the landscape shifts."
           />
-          <div className="mt-14 flow-ux__grid flow-ux__grid--dense">
+          <div className="flow-ux__grid flow-ux__grid--cols-3">
             {products.map((product) => (
-              <article
-                key={product.title}
-                className="group flex h-full flex-col flow-ux__card"
-              >
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-emerald-700 flow-ux__card-meta">
+              <article key={product.title} className="flow-ux__card">
+                <div className="flow-ux__card-meta text-emerald-700">
                   <span>{product.badge}</span>
                   {product.priceLabel === 'Free' ? <Sparkle className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-slate-900">{product.title}</h3>
-                <p className="mt-3 flex-1 text-sm text-slate-600 flow-ux__meta">{product.description}</p>
-                <ul className="mt-6 grid gap-2 text-sm text-slate-600 flow-ux__bullet-list">
+                <h3 className="text-xl font-semibold text-slate-900">{product.title}</h3>
+                <p className="flow-ux__meta">{product.description}</p>
+                <ul className="flow-ux__list flow-ux__meta">
                   {product.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <ShieldCheck className="h-4 w-4 text-emerald-600" />
-                      {feature}
-                    </li>
+                    <li key={feature} className="flow-ux__list-item">{feature}</li>
                   ))}
                 </ul>
-                <div className="mt-8 flex items-center justify-between">
+                <div className="flex items-center justify-between">
                   <span className="text-lg font-semibold text-slate-900">{product.priceLabel}</span>
                   <Button variant={product.priceLabel === 'Free' ? 'secondary' : 'primary'}>
                     {product.priceLabel === 'Free' ? 'Download PDF' : 'Purchase PDF'}
