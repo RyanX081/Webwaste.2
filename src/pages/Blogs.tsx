@@ -45,6 +45,8 @@ export function BlogsPage() {
         primaryCta={{ to: '/resources', label: 'Get the playbooks' }}
         secondaryCta={{ to: '/contact', label: 'Pitch a collaboration' }}
         gradientClass="from-[#0f3d32] via-[#0284c7] to-[#38bdf8]"
+        overlayClassName="bg-slate-950/50"
+        textAlign="left"
       />
 
       <section className="section-shell flow-ux__band">

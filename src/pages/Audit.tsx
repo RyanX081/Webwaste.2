@@ -25,6 +25,8 @@ export function AuditPage() {
         primaryCta={{ to: '/contact', label: 'Book a discovery call' }}
         secondaryCta={{ to: '/services', label: 'View the playbook' }}
         gradientClass="from-[#052e16] via-[#166534] to-[#facc15]"
+        overlayClassName="bg-emerald-950/45"
+        textAlign="left"
       />
 
       <section className={sectionSpacing}

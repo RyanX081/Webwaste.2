@@ -38,6 +38,7 @@ export function LandingPage() {
 function HeroSection() {
   return (
     <HeroBanner
+      id="home"
       eyebrow="Digital sustainability studio"
       eyebrowClassName="text-lime-200"
       title="Your website shouldn’t cost the earth"

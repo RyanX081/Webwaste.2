@@ -55,6 +55,8 @@ export function ServicesPage() {
         primaryCta={{ to: '/contact', label: 'Request a proposal' }}
         secondaryCta={{ to: '/audit', label: 'See the audit kit' }}
         gradientClass="from-[#065f46] via-[#0d9488] to-[#38bdf8]"
+        overlayClassName="bg-emerald-950/40"
+        textAlign="left"
       />
 
       <section className="section-shell flow-ux__band">

@@ -15,6 +15,8 @@ export function ContactPage() {
         primaryCta={{ to: '/contact#contact-form', label: 'Send us a brief' }}
         secondaryCta={{ to: '/services', label: 'Review our services' }}
         gradientClass="from-[#0b3d2c] via-[#047857] to-[#0f766e]"
+        overlayClassName="bg-emerald-950/45"
+        textAlign="left"
       />
 
       <section className="section-shell flow-ux__band">

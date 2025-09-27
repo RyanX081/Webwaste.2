@@ -39,6 +39,8 @@ export function ResourcesPage() {
         primaryCta={{ to: '/contact', label: 'Request a tailored pack' }}
         secondaryCta={{ to: '/blog', label: 'Read our latest insights' }}
         gradientClass="from-[#0f3d32] via-[#10b981] to-[#facc15]"
+        overlayClassName="bg-emerald-950/35"
+        textAlign="left"
       />
 
       <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--subtle">
