@@ -46,21 +46,43 @@ const principles = [
 export function AboutPage() {
   return (
     <div className="flow-ux__stack">
+      <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--hero">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-emerald-700 to-lime-500" aria-hidden="true" />
+        <div className="absolute inset-0 bg-emerald-950/40" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.22),_transparent_70%)]" aria-hidden="true" />
+        <div
+          className="section-shell relative py-24 sm:py-28 text-white"
+          data-flow-animate="fade-up"
+        >
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-lime-100">About</p>
+            <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+              Your website shouldn’t cost the earth
+            </h1>
+            <p className="mt-6 text-base text-emerald-50 sm:text-lg">
+              We help you cut the digital clutter and shrink your carbon footprint.
+            </p>
+          </div>
+        </div>
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#f3f4f0] to-transparent" aria-hidden="true" />
+      </section>
+
       <section className="section-shell flow-ux__band">
         <div
           className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack"
           data-flow-animate="fade-up"
         >
           <SectionHeading
-            kicker="About"
+            kicker="Story"
             title="Founded by designers who obsess over sustainability metrics"
             subtitle="Our studio blends service design, performance engineering, and climate research to help companies shrink their digital footprint."
+            align="left"
           />
           <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
                 <h3 className="text-lg font-semibold text-slate-900">Studio snapshot</h3>
-                <ul className="mt-6 grid gap-4 text-sm text-slate-600">
+                <ul className="mt-6 grid gap-4 text-sm text-slate-700">
                   <li>• 18 specialists across UX, data, and green infrastructure</li>
                   <li>• 60+ audits delivered in B2B, SaaS, public sector, and culture</li>
                   <li>• Partnerships with Wholegrain Digital alumni and climate scientists</li>
