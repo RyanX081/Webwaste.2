@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Layers, Radar, Ruler, Sparkles, Gauge, Users, Globe2, Lightbulb, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Layers, Radar, Ruler, Sparkles, Gauge, Users, Globe2, Lightbulb, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { HeroBanner } from '@/components/common/HeroBanner';
@@ -95,6 +95,30 @@ const serviceHighlights = [
   }
 ];
 
+const highlightAccentClasses: Record<string, string> = {
+  emerald: 'border-emerald-200/60 bg-gradient-to-br from-emerald-50 via-white to-emerald-100/30',
+  teal: 'border-teal-200/60 bg-gradient-to-br from-teal-50 via-white to-teal-100/30',
+  sky: 'border-sky-200/60 bg-gradient-to-br from-sky-50 via-white to-sky-100/25',
+  'emerald-dark': 'border-emerald-300/60 bg-gradient-to-br from-emerald-900/5 via-white to-emerald-200/25',
+  amber: 'border-amber-200/70 bg-gradient-to-br from-amber-50 via-white to-amber-100/30',
+  forest: 'border-emerald-400/50 bg-gradient-to-br from-emerald-900/10 via-white to-emerald-200/25'
+};
+
+const spotlight = {
+  title: 'Operationalising greener delivery in every release',
+  description:
+    'We partner with product, engineering, and operations teams to cut energy and weight while safeguarding business-critical KPIs. Every engagement blends insight, experimentation, and coaching.',
+  bullets: [
+    'Roadmaps underpinned by real emissions and analytics data',
+    'Enablement rituals that stick long after the engagement',
+    'Measured experiments to prove impact to leadership'
+  ],
+  imageWebp:
+    'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80&fm=webp',
+  imageFallback:
+    'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80'
+};
+
 export function ServicesPage() {
   return (
     <div className="flow-ux__stack">
@@ -123,22 +147,7 @@ export function ServicesPage() {
             {serviceHighlights.map((item) => (
               <article
                 key={item.title}
-                className="group flex h-full flex-col justify-between rounded-[1.9rem] border border-transparent bg-white p-7 shadow-[0_32px_80px_-55px_rgba(15,23,42,0.5)] transition hover:-translate-y-1 hover:shadow-[0_40px_90px_-50px_rgba(6,95,70,0.35)]"
-                data-accent={item.accent}
-                style={{
-                  background:
-                    item.accent === 'emerald'
-                      ? 'linear-gradient(145deg, rgba(16,185,129,0.1), rgba(59,130,246,0.08))'
-                      : item.accent === 'teal'
-                        ? 'linear-gradient(145deg, rgba(13,148,136,0.12), rgba(94,234,212,0.08))'
-                        : item.accent === 'sky'
-                          ? 'linear-gradient(145deg, rgba(56,189,248,0.12), rgba(14,165,233,0.1))'
-                          : item.accent === 'emerald-dark'
-                            ? 'linear-gradient(145deg, rgba(6,95,70,0.16), rgba(20,184,166,0.1))'
-                            : item.accent === 'amber'
-                              ? 'linear-gradient(145deg, rgba(251,191,36,0.16), rgba(253,224,71,0.09))'
-                              : 'linear-gradient(145deg, rgba(15,118,110,0.14), rgba(16,185,129,0.08))'
-                }}
+                className={`group flex h-full flex-col justify-between rounded-[1.9rem] border p-7 shadow-[0_32px_80px_-55px_rgba(15,23,42,0.5)] transition hover:-translate-y-1 hover:shadow-[0_40px_90px_-50px_rgba(6,95,70,0.35)] ${highlightAccentClasses[item.accent] ?? 'border-slate-200 bg-white'}`}
               >
                 <div className="flex items-center gap-3 text-emerald-700">
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/50 shadow-inner">
@@ -157,6 +166,51 @@ export function ServicesPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-shell flow-ux__band flow-ux__band--alt">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="space-y-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-700">Why teams partner with us</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{spotlight.title}</h2>
+            <p className="text-base text-slate-600 sm:text-lg">{spotlight.description}</p>
+            <ul className="space-y-3 text-sm text-slate-600">
+              {spotlight.bullets.map((bullet) => (
+                <li key={bullet} className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" aria-hidden="true" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild>
+                <Link to="/contact">
+                  Talk to the team
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Link className="flow-ux__cta flow-ux__cta--tertiary text-emerald-700 hover:text-emerald-600" to="/resources">
+                Download enablement resources
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+          <figure className="relative overflow-hidden rounded-[2.2rem] border border-emerald-200/60 bg-emerald-900/5 shadow-[0_40px_90px_-55px_rgba(6,95,70,0.45)]">
+            <picture>
+              <source srcSet={spotlight.imageWebp} type="image/webp" />
+              <img
+                src={spotlight.imageFallback}
+                alt="Designers reviewing eco-friendly product metrics on a laptop"
+                className="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-emerald-950/70 to-transparent p-6 text-sm text-emerald-50">
+              Carbon-friendly experimentation session in progress — capturing insights for the next release.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
