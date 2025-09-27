@@ -15,7 +15,7 @@ export function Layout({ children }: LayoutProps) {
         <div className="absolute right-[-15%] bottom-[-10%] h-[28rem] w-[28rem] rounded-full bg-[#16a34c]/15 blur-[180px]" aria-hidden="true" />
       </div>
       <Header />
-      <main className="relative z-10 flex-1 pb-16">{children}</main>
+      <main className="relative z-10 flex-1 pb-8 sm:pb-10">{children}</main>
       <Footer />
     </div>
   );

@@ -47,104 +47,39 @@ function HeroSection() {
       className={`${sectionSpacing} pt-28 sm:pt-36`}
     >
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-[480px] bg-gradient-to-b from-[#102a18] via-[#0b2012] to-transparent" />
-        <div className="absolute left-[-15%] top-10 h-72 w-72 rounded-full bg-[#16a34c]/30 blur-3xl" />
-        <div className="absolute bottom-[-10%] right-[-5%] h-72 w-72 rounded-full bg-[#facc14]/30 blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#022c22] via-[#065f46] to-[#16a34c]" aria-hidden="true" />
+        <div className="absolute inset-0 bg-emerald-950/50" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(250,204,21,0.28),_transparent_65%)]" aria-hidden="true" />
       </div>
       <div className={container}>
-        <div className="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
-          <div
-            className={`max-w-xl space-y-8 text-slate-100 transition duration-700 ease-out ${
-              isReady ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            }`}
-          >
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#facc14]">
-              Digital sustainability
-            </span>
-            <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
-              Make every pixel count for the planet—and your customers.
-            </h1>
-            <p className="text-lg text-slate-200/90 sm:text-xl">
-              WebWaste helps organisations design faster, low-carbon journeys. We combine data-informed UX practices with sustainable engineering to reduce emissions without sacrificing delight.
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                className="inline-flex items-center gap-2 rounded-full bg-[#16a34c] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#16a34c]/30 transition hover:bg-[#15803d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                href="#audit"
-              >
-                Run a Green Audit
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <a
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                href="#services"
-              >
-                Explore services
-              </a>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-3">
-              {[
-                {
-                  label: 'Average load time improvement',
-                  value: '41%'
-                },
-                {
-                  label: 'Emissions reduced per project',
-                  value: '2.8 tCO₂e'
-                },
-                {
-                  label: 'Sustainable score increase',
-                  value: '3.2×'
-                }
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm">
-                  <p className="text-[#facc14]">{stat.value}</p>
-                  <p className="mt-2 text-white/70">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div
-            className={`relative rounded-[2rem] bg-slate-900/40 p-6 shadow-2xl shadow-[#102a18]/30 ring-1 ring-white/10 backdrop-blur-xl transition duration-700 ease-out ${
-              isReady ? 'translate-y-0 opacity-100 delay-200' : 'translate-y-6 opacity-0'
-            }`}
-          >
-            <div className="absolute inset-x-10 top-0 h-28 rounded-full bg-gradient-to-b from-white/10 to-transparent blur-2xl" aria-hidden="true" />
-            <div className="relative flex flex-col gap-6 text-sm text-white/80">
-              <div>
-                <p className="text-xs text-white/60">Current footprint</p>
-                <p className="mt-2 text-3xl font-semibold text-white">312 kg CO₂e</p>
-                <p className="mt-3 flex items-center gap-2 text-xs text-emerald-200">
-                  <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-                  18% lower than industry benchmark
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: 'Page weight', value: '0.89 MB' },
-                  { label: 'Renewables mix', value: '82%' },
-                  { label: 'Core Web Vitals', value: '97 score' },
-                  { label: 'Optimised assets', value: '42' }
-                ].map((metric) => (
-                  <div
-                    key={metric.label}
-                    className="rounded-2xl border border-white/10 bg-white/[0.04] p-4"
-                  >
-                    <p className="text-xs uppercase tracking-wide text-white/50">{metric.label}</p>
-                    <p className="mt-2 text-lg font-semibold text-white">{metric.value}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-gradient-to-r from-[#16a34c]/20 via-transparent to-transparent p-4">
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#facc14]">
-                  <Sparkles className="h-4 w-4 text-[#facc14]" aria-hidden="true" />
-                  Next milestone
-                </p>
-                <p className="mt-2 text-sm text-white/80">
-                  Launch automated eco-reporting dashboard to share progress with stakeholders every sprint.
-                </p>
-              </div>
-            </div>
+        <div
+          className={`max-w-3xl space-y-8 text-white transition duration-700 ease-out ${
+            isReady ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+          }`}
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-lime-200">
+            Digital sustainability studio
+          </span>
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-[3.1rem]">
+            Your website shouldn’t cost the earth
+          </h1>
+          <p className="text-lg text-emerald-50 sm:text-xl">
+            We help you cut the digital clutter and shrink your carbon footprint.
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              className="inline-flex items-center gap-2 rounded-full bg-[#facc14] px-6 py-3 text-sm font-semibold text-[#0b3d2c] shadow-lg shadow-[#facc14]/30 transition hover:bg-[#fbbf24] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              href="#audit"
+            >
+              Start a low-carbon project
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              href="#services"
+            >
+              Browse services
+            </a>
           </div>
         </div>
       </div>
@@ -687,7 +622,7 @@ function FaqSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className={`${sectionSpacing} bg-white pb-24`}
+    <section id="contact" className={`${sectionSpacing} bg-white pb-16 sm:pb-20`}
     >
       <div className={container}>
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1fr]">
