@@ -1,5 +1,6 @@
 import React from 'react';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { HeroBanner } from '@/components/common/HeroBanner';
 import { CheckCircle2, Compass, Gauge, Users } from 'lucide-react';
 
 const timeline = [
@@ -46,26 +47,15 @@ const principles = [
 export function AboutPage() {
   return (
     <div className="flow-ux__stack">
-      <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--hero">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-emerald-700 to-lime-500" aria-hidden="true" />
-        <div className="absolute inset-0 bg-emerald-950/40" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.22),_transparent_70%)]" aria-hidden="true" />
-        <div
-          className="section-shell relative py-24 sm:py-28 text-white"
-          data-flow-animate="fade-up"
-        >
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-lime-100">About</p>
-            <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-              Your website shouldn’t cost the earth
-            </h1>
-            <p className="mt-6 text-base text-emerald-50 sm:text-lg">
-              We help you cut the digital clutter and shrink your carbon footprint.
-            </p>
-          </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#f3f4f0] to-transparent" aria-hidden="true" />
-      </section>
+      <HeroBanner
+        eyebrow="About"
+        eyebrowClassName="text-emerald-100"
+        title="Sustainability strategists with a bias for delivery"
+        description="We blend research, design, and engineering to make low-carbon experiences the default for the teams we partner with."
+        primaryCta={{ to: '/services', label: 'Explore our services' }}
+        secondaryCta={{ to: '/contact', label: 'Meet the team' }}
+        gradientClass="from-[#064e3b] via-[#059669] to-[#84cc16]"
+      />
 
       <section className="section-shell flow-ux__band">
         <div

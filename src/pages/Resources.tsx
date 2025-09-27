@@ -2,6 +2,7 @@ import React from 'react';
 import { DownloadCloud, Lock, ShieldCheck, Sparkle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { HeroBanner } from '@/components/common/HeroBanner';
 
 const products = [
   {
@@ -30,6 +31,16 @@ const products = [
 export function ResourcesPage() {
   return (
     <div className="flow-ux__stack">
+      <HeroBanner
+        eyebrow="Resources"
+        eyebrowClassName="text-emerald-100"
+        title="Toolkits to jump-start your low-carbon roadmap"
+        description="Download checklists, playbooks, and executive decks refreshed every quarter with new research and best practice."
+        primaryCta={{ to: '/contact', label: 'Request a tailored pack' }}
+        secondaryCta={{ to: '/blog', label: 'Read our latest insights' }}
+        gradientClass="from-[#0f3d32] via-[#10b981] to-[#facc15]"
+      />
+
       <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--subtle">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 via-white to-sky-100" />
         <div className="absolute inset-0 opacity-50 [mask-image:radial-gradient(circle_at_top,_black,transparent_70%)]">

@@ -9,6 +9,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { HeroBanner } from '@/components/common/HeroBanner';
 
 const sectionSpacing = 'relative py-20 sm:py-24';
 const container = 'mx-auto w-full max-w-6xl px-6 sm:px-8';
@@ -16,7 +17,17 @@ const container = 'mx-auto w-full max-w-6xl px-6 sm:px-8';
 export function AuditPage() {
   return (
     <div className="flow-ux__stack">
-      <section className={`${sectionSpacing} pt-16`}
+      <HeroBanner
+        eyebrow="Green Audit Kit"
+        eyebrowClassName="text-amber-200"
+        title="Launch a carbon-aware roadmap in 30 days"
+        description="Diagnostics, co-design, and storytelling bundles that accelerate your path to a leaner, cleaner product experience."
+        primaryCta={{ to: '/contact', label: 'Book a discovery call' }}
+        secondaryCta={{ to: '/services', label: 'View the playbook' }}
+        gradientClass="from-[#052e16] via-[#166534] to-[#facc15]"
+      />
+
+      <section className={sectionSpacing}
       >
         <div className={container}>
           <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#16a34c] via-[#15803d] to-[#0f3815] p-10 sm:p-16 text-white shadow-[0_40px_90px_-45px_rgba(6,95,70,0.85)]">
@@ -25,27 +36,27 @@ export function AuditPage() {
             <div className="relative grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
               <div className="space-y-6">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#facc14]">
-                  Green Audit Kit
+                  What’s inside
                 </span>
-                <h1 className="text-4xl font-semibold leading-tight sm:text-[2.75rem]">
-                  Launch a carbon-aware roadmap in 30 days.
-                </h1>
+                <h2 className="text-3xl font-semibold leading-tight sm:text-[2.5rem]">
+                  Everything your team needs to act on digital emissions.
+                </h2>
                 <p className="text-lg text-white/85">
-                  Our Green Audit Kit bundles diagnostics, co-design, and leadership-ready storytelling. It meets teams where they are and accelerates the path to a leaner, cleaner product experience.
+                  Custom measurements, actionable playbooks, and enablement support help product, design, and engineering teams ship lower-impact releases with confidence.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <Link
                     className="inline-flex items-center gap-2 rounded-full bg-[#facc14] px-6 py-3 text-sm font-semibold text-[#0f3815] transition hover:bg-[#fbbf24] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                     to="/contact"
                   >
-                    Book a discovery call
+                    Talk to the team
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                   <Link
                     className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                    to="/services"
+                    to="/resources"
                   >
-                    View the playbook
+                    Download the overview
                   </Link>
                 </div>
               </div>

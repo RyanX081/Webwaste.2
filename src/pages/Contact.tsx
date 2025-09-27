@@ -2,10 +2,21 @@ import React from 'react';
 import { Calendar, Mail, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { HeroBanner } from '@/components/common/HeroBanner';
 
 export function ContactPage() {
   return (
     <div className="flow-ux__stack">
+      <HeroBanner
+        eyebrow="Contact"
+        eyebrowClassName="text-emerald-100"
+        title="Let’s build a low-impact, high-performing product"
+        description="Share a few details so we can curate the right mix of audits, design interventions, and enablement for your team."
+        primaryCta={{ to: '/contact#contact-form', label: 'Send us a brief' }}
+        secondaryCta={{ to: '/services', label: 'Review our services' }}
+        gradientClass="from-[#0b3d2c] via-[#047857] to-[#0f766e]"
+      />
+
       <section className="section-shell flow-ux__band">
         <div
           className="grid gap-10 rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] lg:grid-cols-2 lg:gap-16"
@@ -37,6 +48,7 @@ export function ContactPage() {
           </div>
 
           <form
+            id="contact-form"
             className="space-y-6 rounded-3xl border border-slate-200 bg-slate-50 p-8"
             data-flow-animate="fade-left"
             data-flow-animate-delay="120ms"

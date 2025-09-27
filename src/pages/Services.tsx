@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Layers, Radar, Ruler } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { HeroBanner } from '@/components/common/HeroBanner';
 
 const services = [
   {
@@ -46,17 +47,26 @@ const process = [
 export function ServicesPage() {
   return (
     <div className="flow-ux__stack">
-      <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--hero">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-400 to-emerald-300" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.35),_transparent_70%)]" />
+      <HeroBanner
+        eyebrow="Services"
+        eyebrowClassName="text-emerald-100"
+        title="Partnerships that shrink digital waste"
+        description="Audits, sprints, and enablement programmes that make sustainable product delivery measurable and repeatable."
+        primaryCta={{ to: '/contact', label: 'Request a proposal' }}
+        secondaryCta={{ to: '/audit', label: 'See the audit kit' }}
+        gradientClass="from-[#065f46] via-[#0d9488] to-[#38bdf8]"
+      />
+
+      <section className="section-shell flow-ux__band">
         <div
-          className="section-shell relative py-24 text-white flow-ux__stack"
+          className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack"
           data-flow-animate="fade-up"
         >
           <SectionHeading
-            kicker="Services"
+            kicker="Service menu"
             title="Shape a digital presence that champions sustainability and performance"
             subtitle="Choose the partnership format that meets your team where they are—discovery, redesign, or ongoing optimisation."
+            align="left"
           />
           <div
             className="mt-10 flow-ux__accordion"
@@ -130,7 +140,6 @@ export function ServicesPage() {
             </ul>
           </div>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#f3f4f0] to-transparent" />
       </section>
 
       <section className="relative isolate overflow-hidden flow-ux__band flow-ux__band--alt">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight, Bookmark, Leaf, Timer } from 'lucide-react';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { HeroBanner } from '@/components/common/HeroBanner';
 
 const posts = [
   {
@@ -36,6 +37,16 @@ const posts = [
 export function BlogsPage() {
   return (
     <div className="flow-ux__stack">
+      <HeroBanner
+        eyebrow="Blog"
+        eyebrowClassName="text-emerald-100"
+        title="Ideas for lighter, faster, climate-friendly products"
+        description="Field notes, experiments, and case studies to help your team embed sustainable practices with confidence."
+        primaryCta={{ to: '/resources', label: 'Get the playbooks' }}
+        secondaryCta={{ to: '/contact', label: 'Pitch a collaboration' }}
+        gradientClass="from-[#0f3d32] via-[#0284c7] to-[#38bdf8]"
+      />
+
       <section className="section-shell flow-ux__band">
         <div
           className="rounded-[2.5rem] border border-slate-200 bg-white px-8 py-14 shadow-[0_30px_70px_-50px_rgba(15,23,42,0.35)] flow-ux__stack"
