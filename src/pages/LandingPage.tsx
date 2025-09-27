@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   BarChart3,
@@ -51,9 +52,9 @@ function HeroSection() {
         <div className="absolute inset-0 bg-emerald-950/50" aria-hidden="true" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(250,204,21,0.28),_transparent_65%)]" aria-hidden="true" />
       </div>
-      <div className={container}>
+      <div className={`${container} flex justify-center`}>
         <div
-          className={`max-w-3xl space-y-8 text-white transition duration-700 ease-out ${
+          className={`mx-auto flex max-w-3xl flex-col items-center space-y-8 text-center text-white transition duration-700 ease-out ${
             isReady ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
@@ -66,20 +67,20 @@ function HeroSection() {
           <p className="text-lg text-emerald-50 sm:text-xl">
             We help you cut the digital clutter and shrink your carbon footprint.
           </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <a
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
               className="inline-flex items-center gap-2 rounded-full bg-[#facc14] px-6 py-3 text-sm font-semibold text-[#0b3d2c] shadow-lg shadow-[#facc14]/30 transition hover:bg-[#fbbf24] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-              href="#audit"
+              to="/audit"
             >
               Start a low-carbon project
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <a
+            </Link>
+            <Link
               className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-              href="#services"
+              to="/services"
             >
               Browse services
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -250,19 +251,19 @@ function AuditKitSection() {
                 Our Green Audit Kit bundles diagnostics, co-design, and leadership-ready storytelling. It meets teams where they are and accelerates the path to a leaner, cleaner product experience.
               </p>
               <div className="flex flex-wrap items-center gap-4">
-                <a
+                <Link
                   className="inline-flex items-center gap-2 rounded-full bg-[#facc14] px-6 py-3 text-sm font-semibold text-[#0f3815] transition hover:bg-[#fbbf24] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                  href="#contact"
+                  to="/contact"
                 >
                   Book a discovery call
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-                <a
+                </Link>
+                <Link
                   className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                  href="#faq"
+                  to="/services"
                 >
                   View the playbook
-                </a>
+                </Link>
               </div>
             </div>
             <div className="space-y-6">
@@ -468,13 +469,13 @@ function BlogSection() {
               Stories, checklists, and case studies to help teams embed sustainable thinking into everyday product decisions.
             </p>
           </div>
-          <a
+          <Link
             className="inline-flex items-center gap-2 self-start rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-[#16a34c]/50 hover:text-[#16a34c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#16a34c]"
-            href="#"
+            to="/blog"
           >
             View all posts
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </a>
+          </Link>
         </div>
         <div className="mt-12 grid gap-8 lg:grid-cols-3">
           {posts.map((post) => (
@@ -504,13 +505,13 @@ function BlogSection() {
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900">{post.title}</h3>
                 <p className="text-sm leading-relaxed text-slate-600">{post.excerpt}</p>
-                <a
+                <Link
                   className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#16a34c] transition group-hover:gap-3"
-                  href={post.href}
+                  to="/blog"
                 >
                   Read the story
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
+                </Link>
               </div>
             </article>
           ))}
@@ -564,13 +565,13 @@ function FaqSection() {
               <p className="mt-2 text-sm text-slate-600">
                 Download the Sustainability Sprint Planning worksheet to identify low-carbon backlog items every iteration.
               </p>
-              <a
+              <Link
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#facc14] px-5 py-2 text-xs font-semibold text-[#0f3815] transition hover:bg-[#fbbf24]"
-                href="#"
+                to="/resources"
               >
                 Get the worksheet
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="space-y-4">
@@ -622,7 +623,7 @@ function FaqSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className={`${sectionSpacing} bg-white pb-16 sm:pb-20`}
+    <section id="contact" className={`${sectionSpacing} bg-white pb-12 sm:pb-16`}
     >
       <div className={container}>
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1fr]">
@@ -637,13 +638,13 @@ function ContactSection() {
             <div className="rounded-[1.75rem] border border-[#16a34c]/20 bg-[#f0fdf4] p-6 text-sm text-slate-700">
               <p className="font-semibold text-[#14532d]">Looking for something quick?</p>
               <p className="mt-2">Grab our 10-minute carbon reducer checklist for product teams.</p>
-              <a
+              <Link
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#16a34c] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#15803d]"
-                href="#"
+                to="/resources"
               >
                 Download checklist
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+              </Link>
             </div>
             <div className="flex flex-wrap gap-6 text-sm text-slate-600">
               <div>

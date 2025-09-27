@@ -117,7 +117,7 @@ export function ServicesPage() {
                       </ul>
                       <div className="flow-ux__cta-group">
                         <Button asChild variant="secondary">
-                          <Link to="/get-started">
+                          <Link to="/contact">
                             Request proposal
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Link>

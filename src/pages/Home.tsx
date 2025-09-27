@@ -66,7 +66,7 @@ export function HomePage() {
             </p>
             <div className="flow-ux__cta-group">
               <Button asChild>
-                <Link to="/get-started">
+                <Link to="/contact">
                   Start a low-carbon project
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

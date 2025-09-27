@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Green Audit Kit', href: '#audit' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '#contact' }
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'Green Audit Kit', to: '/audit' },
+  { label: 'Blog', to: '/blog' },
+  { label: 'Contact', to: '/contact' }
 ];
 
 export function Header() {
@@ -39,23 +40,6 @@ export function Header() {
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, [isMenuOpen]);
 
-  const motionQuery = typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-  const prefersReducedMotion = motionQuery?.matches ?? false;
-
-  const handleNavigate = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    event.preventDefault();
-    const targetId = href.replace('#', '');
-    const el = document.getElementById(targetId);
-    if (el) {
-      const headerOffset = 88;
-      const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
-      window.scrollTo({ top: Math.max(y, 0), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    } else {
-      window.location.hash = targetId;
-    }
-    setIsMenuOpen(false);
-  };
-
   return (
     <header
       className={`sticky top-0 z-50 transition ${
@@ -63,34 +47,39 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6 sm:px-8">
-        <a
+        <Link
           className="flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900"
-          href="#home"
-          onClick={(event) => handleNavigate(event, '#home')}
+          to="/"
+          onClick={() => setIsMenuOpen(false)}
         >
           <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#16a34c]/10 text-[#16a34c]">
             WW
           </span>
           WebWaste
-        </a>
+        </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => (
-            <a
-              key={item.href}
-              className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-[#16a34c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
-              href={item.href}
-              onClick={(event) => handleNavigate(event, item.href)}
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === '/'}
+              className={({ isActive }) =>
+                `rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c] ${
+                  isActive ? 'bg-slate-100 text-[#15803d]' : 'text-slate-600 hover:bg-slate-100 hover:text-[#16a34c]'
+                }`
+              }
+              onClick={() => setIsMenuOpen(false)}
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
-          <a
+          <NavLink
             className="ml-2 inline-flex items-center gap-2 rounded-full bg-[#16a34c] px-5 py-2 text-sm font-semibold text-white shadow-md shadow-[#16a34c]/30 transition hover:bg-[#15803d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
-            href="#audit"
-            onClick={(event) => handleNavigate(event, '#audit')}
+            to="/audit"
+            onClick={() => setIsMenuOpen(false)}
           >
             Run a Green Audit
-          </a>
+          </NavLink>
         </nav>
         <button
           type="button"
@@ -113,22 +102,27 @@ export function Header() {
           <div className="rounded-[1.75rem] border border-slate-200 bg-white/95 p-6 shadow-2xl shadow-slate-900/10 backdrop-blur">
             <div className="flex flex-col gap-3">
               {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  className="rounded-2xl px-4 py-3 text-base font-semibold text-slate-600 transition hover:bg-[#16a34c]/10 hover:text-[#15803d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
-                  href={item.href}
-                  onClick={(event) => handleNavigate(event, item.href)}
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end={item.to === '/'}
+                  className={({ isActive }) =>
+                    `rounded-2xl px-4 py-3 text-base font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c] ${
+                      isActive ? 'bg-[#16a34c]/10 text-[#15803d]' : 'text-slate-600 hover:bg-[#16a34c]/10 hover:text-[#15803d]'
+                    }`
+                  }
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </NavLink>
               ))}
-              <a
+              <NavLink
                 className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#16a34c] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#16a34c]/30 transition hover:bg-[#15803d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
-                href="#audit"
-                onClick={(event) => handleNavigate(event, '#audit')}
+                to="/audit"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Run a Green Audit
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>

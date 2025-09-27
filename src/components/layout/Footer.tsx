@@ -1,13 +1,14 @@
 import React from 'react';
 import { ArrowRight, Linkedin, Mail, Send, Twitter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Green Audit Kit', href: '#audit' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '#contact' }
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'Green Audit Kit', to: '/audit' },
+  { label: 'Blog', to: '/blog' },
+  { label: 'Contact', to: '/contact' }
 ];
 
 const socials = [
@@ -22,12 +23,12 @@ export function Footer() {
       <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <a className="flex items-center gap-3 text-lg font-semibold tracking-tight" href="#home">
+            <Link className="flex items-center gap-3 text-lg font-semibold tracking-tight" to="/">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#16a34c]/20 text-[#16a34c]">
                 WW
               </span>
               WebWaste
-            </a>
+            </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">
               We design digital experiences that move faster, feel better, and tread lighter on the planet. From research to release, sustainability is baked into every decision.
             </p>
@@ -60,10 +61,10 @@ export function Footer() {
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#facc14]">Navigate</p>
               <ul className="mt-5 space-y-3 text-sm text-white/70">
                 {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <a className="transition hover:text-white" href={link.href}>
+                  <li key={link.to}>
+                    <Link className="transition hover:text-white" to={link.to}>
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
