@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Layers, Radar, Ruler } from 'lucide-react';
+import { ArrowRight, Layers, Radar, Ruler, Sparkles, Gauge, Users, Globe2, Lightbulb, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { HeroBanner } from '@/components/common/HeroBanner';
@@ -44,6 +44,57 @@ const process = [
   }
 ];
 
+const serviceHighlights = [
+  {
+    title: 'Low-carbon discovery sprint',
+    description: 'Co-design a lighter journey in five days with rapid research, data baselining, and a measurable action plan.',
+    ctaLabel: 'Plan a sprint',
+    to: '/contact',
+    icon: <Sparkles className="h-5 w-5" aria-hidden="true" />,
+    accent: 'emerald'
+  },
+  {
+    title: 'Sustainable UX audit',
+    description: 'Audit content, design systems, and flows to identify high-impact reductions in weight, energy, and emissions.',
+    ctaLabel: 'Book an audit',
+    to: '/audit',
+    icon: <Gauge className="h-5 w-5" aria-hidden="true" />,
+    accent: 'teal'
+  },
+  {
+    title: 'Inclusive performance review',
+    description: 'Pair with your engineers to trim scripts, improve Core Web Vitals, and keep accessibility guardrails intact.',
+    ctaLabel: 'Schedule review',
+    to: '/contact',
+    icon: <Users className="h-5 w-5" aria-hidden="true" />,
+    accent: 'sky'
+  },
+  {
+    title: 'Green infrastructure roadmap',
+    description: 'Map infrastructure decisions—hosting, CDN, caching—to low-carbon options aligned with regulatory needs.',
+    ctaLabel: 'Start roadmap',
+    to: '/contact',
+    icon: <Globe2 className="h-5 w-5" aria-hidden="true" />,
+    accent: 'emerald-dark'
+  },
+  {
+    title: 'Behavioural experimentation lab',
+    description: 'Run lightweight experiments that test copy, motion, and asset changes for measurable carbon reductions.',
+    ctaLabel: 'Run experiments',
+    to: '/contact',
+    icon: <Lightbulb className="h-5 w-5" aria-hidden="true" />,
+    accent: 'amber'
+  },
+  {
+    title: 'Sustainability enablement playbook',
+    description: 'Upskill your team with workshops, templates, and budgets so climate-aware delivery sticks long-term.',
+    ctaLabel: 'Get the playbook',
+    to: '/resources',
+    icon: <ShieldCheck className="h-5 w-5" aria-hidden="true" />,
+    accent: 'forest'
+  }
+];
+
 export function ServicesPage() {
   return (
     <div className="flow-ux__stack">
@@ -58,6 +109,56 @@ export function ServicesPage() {
         overlayClassName="bg-emerald-950/40"
         textAlign="left"
       />
+
+      <section className="section-shell flow-ux__band">
+        <div className="flow-ux__stack">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-700">Choose your focus</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Six ways to work with us right now</h2>
+            <p className="mt-4 text-base text-slate-600 sm:text-lg">
+              Mix and match engagements to suit your roadmap—every box leads to a tangible collaboration that trims waste without slowing delivery.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {serviceHighlights.map((item) => (
+              <article
+                key={item.title}
+                className="group flex h-full flex-col justify-between rounded-[1.9rem] border border-transparent bg-white p-7 shadow-[0_32px_80px_-55px_rgba(15,23,42,0.5)] transition hover:-translate-y-1 hover:shadow-[0_40px_90px_-50px_rgba(6,95,70,0.35)]"
+                data-accent={item.accent}
+                style={{
+                  background:
+                    item.accent === 'emerald'
+                      ? 'linear-gradient(145deg, rgba(16,185,129,0.1), rgba(59,130,246,0.08))'
+                      : item.accent === 'teal'
+                        ? 'linear-gradient(145deg, rgba(13,148,136,0.12), rgba(94,234,212,0.08))'
+                        : item.accent === 'sky'
+                          ? 'linear-gradient(145deg, rgba(56,189,248,0.12), rgba(14,165,233,0.1))'
+                          : item.accent === 'emerald-dark'
+                            ? 'linear-gradient(145deg, rgba(6,95,70,0.16), rgba(20,184,166,0.1))'
+                            : item.accent === 'amber'
+                              ? 'linear-gradient(145deg, rgba(251,191,36,0.16), rgba(253,224,71,0.09))'
+                              : 'linear-gradient(145deg, rgba(15,118,110,0.14), rgba(16,185,129,0.08))'
+                }}
+              >
+                <div className="flex items-center gap-3 text-emerald-700">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/50 shadow-inner">
+                    {item.icon}
+                  </span>
+                  <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+                </div>
+                <p className="mt-5 flex-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
+                <Link
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 transition hover:text-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
+                  to={item.to}
+                >
+                  {item.ctaLabel}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section-shell flow-ux__band">
         <div
