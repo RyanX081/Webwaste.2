@@ -44,9 +44,55 @@ const process = [
   }
 ];
 
-const serviceHighlights = [
+const highlightAccentStyles = {
+  emerald: {
+    card: 'border-emerald-200/60 bg-gradient-to-br from-emerald-50 via-white to-emerald-100/30 text-emerald-900',
+    iconWrap: 'bg-emerald-600/10 text-emerald-700',
+    link: 'text-emerald-700 hover:text-emerald-600'
+  },
+  teal: {
+    card: 'border-teal-200/60 bg-gradient-to-br from-teal-50 via-white to-teal-100/30 text-teal-900',
+    iconWrap: 'bg-teal-600/10 text-teal-700',
+    link: 'text-teal-700 hover:text-teal-600'
+  },
+  sky: {
+    card: 'border-sky-200/60 bg-gradient-to-br from-sky-50 via-white to-sky-100/25 text-sky-900',
+    iconWrap: 'bg-sky-600/10 text-sky-700',
+    link: 'text-sky-700 hover:text-sky-600'
+  },
+  emeraldDark: {
+    card: 'border-emerald-300/60 bg-gradient-to-br from-emerald-900/5 via-white to-emerald-200/25 text-emerald-900',
+    iconWrap: 'bg-emerald-700/10 text-emerald-800',
+    link: 'text-emerald-800 hover:text-emerald-700'
+  },
+  amber: {
+    card: 'border-amber-200/70 bg-gradient-to-br from-amber-50 via-white to-amber-100/30 text-amber-900',
+    iconWrap: 'bg-amber-500/10 text-amber-700',
+    link: 'text-amber-700 hover:text-amber-600'
+  },
+  forest: {
+    card: 'border-emerald-400/50 bg-gradient-to-br from-emerald-900/10 via-white to-emerald-200/25 text-emerald-900',
+    iconWrap: 'bg-emerald-900/10 text-emerald-700',
+    link: 'text-emerald-700 hover:text-emerald-600'
+  }
+} as const;
+
+type HighlightAccent = keyof typeof highlightAccentStyles;
+
+type ServiceHighlight = {
+  title: string;
+  description: string;
+  ctaLabel: string;
+  to: string;
+  icon: React.ReactNode;
+  accent: HighlightAccent;
+  category: string;
+};
+
+const serviceHighlights: ServiceHighlight[] = [
   {
     title: 'Low-carbon discovery sprint',
+    category: 'Sprint',
     description: 'Co-design a lighter journey in five days with rapid research, data baselining, and a measurable action plan.',
     ctaLabel: 'Plan a sprint',
     to: '/contact',
@@ -55,6 +101,7 @@ const serviceHighlights = [
   },
   {
     title: 'Sustainable UX audit',
+    category: 'Audit',
     description: 'Audit content, design systems, and flows to identify high-impact reductions in weight, energy, and emissions.',
     ctaLabel: 'Book an audit',
     to: '/audit',
@@ -63,6 +110,7 @@ const serviceHighlights = [
   },
   {
     title: 'Inclusive performance review',
+    category: 'Performance',
     description: 'Pair with your engineers to trim scripts, improve Core Web Vitals, and keep accessibility guardrails intact.',
     ctaLabel: 'Schedule review',
     to: '/contact',
@@ -71,14 +119,16 @@ const serviceHighlights = [
   },
   {
     title: 'Green infrastructure roadmap',
+    category: 'Infrastructure',
     description: 'Map infrastructure decisions—hosting, CDN, caching—to low-carbon options aligned with regulatory needs.',
     ctaLabel: 'Start roadmap',
     to: '/contact',
     icon: <Globe2 className="h-5 w-5" aria-hidden="true" />,
-    accent: 'emerald-dark'
+    accent: 'emeraldDark'
   },
   {
     title: 'Behavioural experimentation lab',
+    category: 'Experimentation',
     description: 'Run lightweight experiments that test copy, motion, and asset changes for measurable carbon reductions.',
     ctaLabel: 'Run experiments',
     to: '/contact',
@@ -87,6 +137,7 @@ const serviceHighlights = [
   },
   {
     title: 'Sustainability enablement playbook',
+    category: 'Enablement',
     description: 'Upskill your team with workshops, templates, and budgets so climate-aware delivery sticks long-term.',
     ctaLabel: 'Get the playbook',
     to: '/resources',
@@ -94,15 +145,6 @@ const serviceHighlights = [
     accent: 'forest'
   }
 ];
-
-const highlightAccentClasses: Record<string, string> = {
-  emerald: 'border-emerald-200/60 bg-gradient-to-br from-emerald-50 via-white to-emerald-100/30',
-  teal: 'border-teal-200/60 bg-gradient-to-br from-teal-50 via-white to-teal-100/30',
-  sky: 'border-sky-200/60 bg-gradient-to-br from-sky-50 via-white to-sky-100/25',
-  'emerald-dark': 'border-emerald-300/60 bg-gradient-to-br from-emerald-900/5 via-white to-emerald-200/25',
-  amber: 'border-amber-200/70 bg-gradient-to-br from-amber-50 via-white to-amber-100/30',
-  forest: 'border-emerald-400/50 bg-gradient-to-br from-emerald-900/10 via-white to-emerald-200/25'
-};
 
 const spotlight = {
   title: 'Operationalising greener delivery in every release',
@@ -118,6 +160,29 @@ const spotlight = {
   imageFallback:
     'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80'
 };
+
+const engagementMetrics = [
+  {
+    label: 'Average page-weight reduction',
+    value: '↓48%',
+    description: 'Combine asset optimisation with content strategy to keep stories sharp and light.'
+  },
+  {
+    label: 'Faster perceived load',
+    value: '1.9×',
+    description: 'Lean design systems and motion guidance keep first contentful paint in the green.'
+  },
+  {
+    label: 'Energy saved per visit',
+    value: '2.1 g CO₂e',
+    description: 'Continuous audits highlight hotspots so teams can maintain the low-carbon baseline.'
+  },
+  {
+    label: 'Team enablement satisfaction',
+    value: '96%',
+    description: 'Designers, PMs, and engineers rate our playbooks highly for staying power.'
+  }
+];
 
 export function ServicesPage() {
   return (
@@ -136,34 +201,61 @@ export function ServicesPage() {
 
       <section className="section-shell flow-ux__band">
         <div className="flow-ux__stack">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-700">Choose your focus</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Six ways to work with us right now</h2>
-            <p className="mt-4 text-base text-slate-600 sm:text-lg">
-              Mix and match engagements to suit your roadmap—every box leads to a tangible collaboration that trims waste without slowing delivery.
-            </p>
-          </div>
+          <SectionHeading
+            kicker="Choose your focus"
+            title="Six accelerated ways to partner with WebWaste"
+            subtitle="Stack or sequence engagements to suit your roadmap. Every track blends measurable carbon impact with improved product performance."
+            align="left"
+            className="max-w-4xl"
+          />
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {serviceHighlights.map((item) => (
-              <article
-                key={item.title}
-                className={`group flex h-full flex-col justify-between rounded-[1.9rem] border p-7 shadow-[0_32px_80px_-55px_rgba(15,23,42,0.5)] transition hover:-translate-y-1 hover:shadow-[0_40px_90px_-50px_rgba(6,95,70,0.35)] ${highlightAccentClasses[item.accent] ?? 'border-slate-200 bg-white'}`}
-              >
-                <div className="flex items-center gap-3 text-emerald-700">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/50 shadow-inner">
-                    {item.icon}
-                  </span>
-                  <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                </div>
-                <p className="mt-5 flex-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                <Link
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 transition hover:text-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c]"
-                  to={item.to}
+            {serviceHighlights.map((item) => {
+              const accent = highlightAccentStyles[item.accent];
+              return (
+                <article
+                  key={item.title}
+                  className={`group flex h-full flex-col rounded-[1.9rem] border p-7 shadow-[0_32px_80px_-55px_rgba(15,23,42,0.45)] transition hover:-translate-y-1 hover:shadow-[0_40px_90px_-50px_rgba(6,95,70,0.35)] ${accent.card}`}
                 >
-                  {item.ctaLabel}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </article>
+                  <div className="flex items-center gap-3">
+                    <span className={`flex h-11 w-11 items-center justify-center rounded-full shadow-inner ${accent.iconWrap}`}>
+                      {item.icon}
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">{item.category}</p>
+                      <h3 className="mt-2 text-lg font-semibold text-slate-900">{item.title}</h3>
+                    </div>
+                  </div>
+                  <p className="mt-5 flex-1 text-sm leading-relaxed text-slate-700">{item.description}</p>
+                  <Link
+                    className={`mt-6 inline-flex items-center gap-2 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#16a34c] ${accent.link}`}
+                    to={item.to}
+                  >
+                    {item.ctaLabel}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell flow-ux__band">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+          <SectionHeading
+            kicker="Results without greenwashing"
+            title="What our clients see within the first quarter"
+            subtitle="We pair carbon and UX improvements so sustainability initiatives unlock stronger business outcomes."
+            align="left"
+            className="max-w-xl"
+          />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {engagementMetrics.map((metric) => (
+              <div key={metric.label} className="rounded-3xl border border-emerald-200/40 bg-white p-6 shadow-[0_24px_60px_-40px_rgba(16,163,76,0.35)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-700">{metric.label}</p>
+                <p className="mt-3 text-3xl font-semibold text-slate-900">{metric.value}</p>
+                <p className="mt-3 text-sm text-slate-600">{metric.description}</p>
+              </div>
             ))}
           </div>
         </div>
