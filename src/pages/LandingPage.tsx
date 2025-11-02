@@ -39,13 +39,18 @@ function HeroSection() {
   return (
     <HeroBanner
       id="home"
-      eyebrow="Digital sustainability studio"
-      eyebrowClassName="text-lime-200"
       title="Your website shouldn’t cost the earth"
-      description="We help you cut the digital clutter and shrink your carbon footprint."
-      primaryCta={{ to: '/audit', label: 'Start a low-carbon project' }}
-      secondaryCta={{ to: '/services', label: 'Browse services' }}
+      description="We help you cut the digital clutter and shrink your carbon footprint. Build smarter. Waste less. Save the Earth."
+      primaryCta={{ to: '/services', label: 'Browse services' }}
       gradientClass="from-[#022c22] via-[#065f46] to-[#16a34c]"
+      textAlign="left"
+      className="pt-24 sm:pt-32 pb-20"
+      media={{
+        src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=80',
+        alt: 'Sunlit evergreen forest showcasing sustainable nature',
+        className: 'max-w-xl md:max-w-2xl lg:max-w-[38rem] xl:max-w-[42rem] justify-self-center md:justify-self-end',
+        imgClassName: 'object-cover'
+      }}
     />
   );
 }

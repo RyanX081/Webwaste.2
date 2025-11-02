@@ -9,7 +9,7 @@ type Cta = {
 
 type HeroBannerProps = {
   id?: string;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   description: string;
   primaryCta?: Cta;
@@ -21,6 +21,12 @@ type HeroBannerProps = {
   textAlign?: 'center' | 'left';
   className?: string;
   containerClassName?: string;
+  media?: {
+    src: string;
+    alt: string;
+    className?: string;
+    imgClassName?: string;
+  };
 };
 
 const containerClass = 'mx-auto w-full max-w-6xl px-6 sm:px-8';
@@ -42,7 +48,8 @@ export function HeroBanner({
   bottomFadeClassName = 'from-[#f3f4f0]',
   textAlign = 'center',
   className,
-  containerClassName
+  containerClassName,
+  media
 }: HeroBannerProps) {
   const [isReady, setIsReady] = useState(false);
 
@@ -55,6 +62,25 @@ export function HeroBanner({
     textAlign === 'left'
       ? 'items-start text-left'
       : 'items-center text-center';
+
+  const hasMedia = Boolean(media);
+
+  const layoutClasses = hasMedia
+    ? 'grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-start lg:gap-16 lg:items-center'
+    : cx('flex', textAlign === 'left' ? 'justify-start' : 'justify-center');
+
+  const textWidthClass = hasMedia
+    ? 'max-w-xl'
+    : textAlign === 'left'
+      ? 'max-w-3xl'
+      : 'mx-auto max-w-3xl';
+
+  const textWrapperClasses = cx(
+    'flex flex-col space-y-8 text-white transition duration-700 ease-out',
+    alignmentClasses,
+    textWidthClass,
+    isReady ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+  );
 
   const ctaAlignment = textAlign === 'left' ? 'justify-start' : 'justify-center';
 
@@ -69,22 +95,18 @@ export function HeroBanner({
       <div className={cx('absolute inset-0 bg-gradient-to-br', gradientClass)} aria-hidden="true" />
       <div className={cx('absolute inset-0', overlayClassName)} aria-hidden="true" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(250,204,21,0.22),_transparent_65%)]" aria-hidden="true" />
-      <div className={cx(containerClass, 'flex', textAlign === 'left' ? '' : 'justify-center', containerClassName)}>
-        <div
-          className={cx(
-            'mx-auto flex max-w-3xl flex-col space-y-8 text-white transition duration-700 ease-out',
-            alignmentClasses,
-            isReady ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+      <div className={cx(containerClass, layoutClasses, containerClassName)}>
+        <div className={textWrapperClasses}>
+          {eyebrow && (
+            <span
+              className={cx(
+                'inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em]',
+                eyebrowClassName
+              )}
+            >
+              {eyebrow}
+            </span>
           )}
-        >
-          <span
-            className={cx(
-              'inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em]',
-              eyebrowClassName
-            )}
-          >
-            {eyebrow}
-          </span>
           <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-[3.1rem]">
             {title}
           </h1>
@@ -114,6 +136,21 @@ export function HeroBanner({
             </div>
           )}
         </div>
+        {hasMedia && media && (
+          <figure
+            className={cx(
+              'relative w-full overflow-hidden rounded-[2.5rem] border border-white/20 bg-white/5 p-4 shadow-2xl shadow-emerald-900/30 backdrop-blur-sm',
+              media.className
+            )}
+          >
+            <img
+              src={media.src}
+              alt={media.alt}
+              className={cx('h-full w-full rounded-[2rem] object-cover', media.imgClassName)}
+            />
+            <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-br from-white/10 via-transparent to-emerald-900/20" aria-hidden="true" />
+          </figure>
+        )}
       </div>
       <div className={cx('absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t to-transparent', bottomFadeClassName)} aria-hidden="true" />
     </section>

@@ -24,9 +24,11 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr]">
           <div>
             <Link className="flex items-center gap-3 text-lg font-semibold tracking-tight" to="/">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#16a34c]/20 text-[#16a34c]">
-                WW
-              </span>
+              <img
+                src="https://res.cloudinary.com/dz28p7nbx/image/upload/v1761941808/Logo2_lptcrt.png"
+                alt="WebWaste"
+                className="h-11 w-11 rounded-full object-contain"
+              />
               WebWaste
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">

@@ -7,7 +7,8 @@ type ButtonProps = {
   asChild?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const baseStyles = 'inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 disabled:pointer-events-none disabled:opacity-50 flow-ux__cta';
+const baseStyles =
+  'inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-emerald-500 disabled:pointer-events-none disabled:opacity-50 flow-ux__cta';
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:

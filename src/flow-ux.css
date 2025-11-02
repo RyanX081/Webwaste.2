@@ -10,7 +10,7 @@
   --flow-ux-accent-secondary: #0ea5e9;
   --flow-ux-accent-tertiary: #14b8a6;
   --flow-ux-accent-inverse: #ecfdf5;
-  --flow-ux-focus-ring: 0 0 0 3px rgba(20, 184, 166, 0.35);
+  --flow-ux-focus-ring: 0 0 0 4px rgba(20, 184, 166, 0.45), 0 0 0 7px rgba(20, 184, 166, 0.18);
   --flow-ux-radius-lg: 1.75rem;
   --flow-ux-radius-md: 1.25rem;
   --flow-ux-radius-pill: 999px;
@@ -108,7 +108,8 @@
 }
 
 .flow-ux__cta:focus-visible {
-  outline: none;
+  outline: 3px solid rgba(4, 120, 87, 0.7);
+  outline-offset: 3px;
   box-shadow: var(--flow-ux-focus-ring);
 }
 
